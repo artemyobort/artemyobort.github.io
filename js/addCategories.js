@@ -18,15 +18,11 @@ AddCategories.prototype.getCategories = function (){
 	    parent: addCategories
 	  });
 
-	  if (!getDb.length) {
-	    return false
-	  }
-
 	  getDb.forEach(function(category) {
 	    console.log(category.title);
 	    var addLi = markup.create({
 	      tag: 'li',
-	      parent: addUl,
+	      parent: addUl
 	    });
 
 	    var addA = murkup.create({
