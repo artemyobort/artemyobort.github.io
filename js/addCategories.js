@@ -7,8 +7,10 @@ function AddCategories(){
 }
 
 AddCategories.prototype.getCategories = function (){
-	var getDb = data.read('db');
-		getDb = JSON.parse(getDb);
+	// var getDb = data.read('db');
+	// 	getDb = JSON.parse(getDb);
+
+	var getDb = JSON.parse(data.read('db'));
 
 	var addCategories = document.getElementById('categories');
 	  addCategories.innerHTML = '';
@@ -18,18 +20,18 @@ AddCategories.prototype.getCategories = function (){
 	    parent: addCategories
 	  });
 
-	  getDb.forEach(function(category) {
+	  getDb.categories.forEach(function(category) {
 	    console.log(category.title);
 	    var addLi = markup.create({
 	      tag: 'li',
 	      parent: addUl
 	    });
 
-	    var addA = murkup.create({
+	    var addA = markup.create({
 	    	tag: 'a',
 	    	content: category.title,
-	    	parent: addLi,
-	    	attrs: 'href="#"'
+	    	parent: addLi
+	    	// attrs: 'href="#"'
 	    });
 	});
 };
