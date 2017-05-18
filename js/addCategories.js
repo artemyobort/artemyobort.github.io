@@ -21,7 +21,7 @@ AddCategories.prototype.getCategories = function (){
 	  });
 
 	  getDb.categories.forEach(function(category) {
-	    console.log(category.title);
+	    // console.log(category.title);
 	    var addLi = markup.create({
 	      tag: 'li',
 	      parent: addUl

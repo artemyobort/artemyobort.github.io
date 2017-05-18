@@ -45,7 +45,7 @@ data.create('db', JSON.stringify(
         title: 'Product4',
         category: 'cat4',
         description: 'description4',
-        price: 120
+        price: 130
       }
     ]
   }
