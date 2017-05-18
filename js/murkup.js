@@ -89,19 +89,4 @@ Markup.prototype.create = function(options) {
   return element;
 };
 
-Markup.prototype.update = function(query, content) {
-  var elements = this.find(query);
-  elements[0].innerHTML = content;
-};
-
-Markup.prototype.delete = function(query) {
-  var elements = this.find(query);
-  elements[0].remove();
-};
-
-Markup.prototype.find = function(query) {
-  var elements = document.querySelectorAll(query);
-  return elements;
-};
-
 var markup = new Markup();
