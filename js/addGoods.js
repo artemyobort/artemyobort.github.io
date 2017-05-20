@@ -56,7 +56,9 @@ AddGoods.prototype.getGoods = function (){
 		var addImg = markup.create({
 			tag: 'img',
 			parent: addDiv,
-			// attrs: 'src="https://pp.userapi.com/c629327/v629327473/db66/r051joYFRX0.jpg"'
+			attrs: [
+				{src: "https://pp.userapi.com/c629327/v629327473/db66/r051joYFRX0.jpg"}
+			]
 		});
 
 		var addP = markup.create({

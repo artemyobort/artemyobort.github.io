@@ -30,8 +30,10 @@ AddCategories.prototype.getCategories = function (){
 	    var addA = markup.create({
 	    	tag: 'a',
 	    	content: category.title,
-	    	parent: addLi
-	    	// attrs: 'href="#"'
+	    	parent: addLi,
+	    	attrs: [
+	    		{href: "#"}
+	    	]
 	    });
 	});
 };
