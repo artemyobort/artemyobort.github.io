@@ -60,7 +60,7 @@
   transition: transform .4s ease-out;
 }
 
-.product:hover .product-photo img {
+.product-photo img:hover {
   transform: scale(1.05);
 }
 
@@ -70,3 +70,7 @@
   color: #000000;
 }
 
+.dropdown {
+  float: right;
+  margin-top: 10px;
+}

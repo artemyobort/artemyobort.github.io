@@ -15,12 +15,6 @@ AddGoods.prototype.getGoods = function (){
 	var addGoods = document.getElementById('goods');
 	  addGoods.innerHTML = '';
 
-	var addTitle = markup.create({
-		tag: 'h3',
-		content: 'Goods:',
-		parent: addGoods
-	});
-
 	var addUl = markup.create({
 		tag: 'ul',
 		parent: addGoods,
