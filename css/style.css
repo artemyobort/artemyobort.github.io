@@ -74,3 +74,6 @@
   float: right;
   margin-top: 10px;
 }
+.dropdown a {
+  text-align: center;
+}

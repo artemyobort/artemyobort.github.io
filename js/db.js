@@ -46,6 +46,34 @@ data.create('db', JSON.stringify(
         category: 'cat4',
         description: 'description4',
         price: 130
+      },
+      {
+        id: 'prod5',
+        title: 'Product5',
+        category: 'cat1',
+        description: 'description5',
+        price: 140
+      },
+      {
+        id: 'prod6',
+        title: 'Product6',
+        category: 'cat2',
+        description: 'description6',
+        price: 150
+      },
+      {
+        id: 'prod7',
+        title: 'Product7',
+        category: 'cat3',
+        description: 'description7',
+        price: 160
+      },
+      {
+        id: 'prod8',
+        title: 'Product8',
+        category: 'cat4',
+        description: 'description8',
+        price: 170
       }
     ]
   }
