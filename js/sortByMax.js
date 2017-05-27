@@ -1,8 +1,8 @@
 var elem = document.getElementById('max');
 
-events.on(elem, "click", sortByMax.sort);
+events.on(elem, "click", sortBy.sortByMax);
 
-function SortByMax(){
+function SortBy(){
 	var db = data.read('db');
   	if (!db) {
 	    db = [];
@@ -12,7 +12,7 @@ function SortByMax(){
 
 }
 
-SortByMax.prototype.sort = function (){
+SortBy.prototype.sortByMax = function (){
 	var getDb = JSON.parse(data.read('db'));
 	var addGoods = document.getElementById('goods');
 	  addGoods.innerHTML = '';
@@ -78,6 +78,6 @@ SortByMax.prototype.sort = function (){
 	});
 };
 
-var sortByMax = new SortByMax();
+var sortBy = new SortBy();
 
 // addGoods.getGoods();
