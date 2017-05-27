@@ -1,7 +1,3 @@
-var elem = document.getElementById('max');
-
-events.on(elem, "click", sortBy.sortByMax);
-
 function SortBy(){
 	var db = data.read('db');
   	if (!db) {
@@ -23,7 +19,7 @@ SortBy.prototype.sortByMax = function (){
 		className: 'products clearfix'
 	});
 
-	getDb.products.forEach(function(price) {
+	getDb.products.forEach(function(product, price) {
 		getDb.products.sort(function(a,b){
 			return b.price - a.price;
 		});
@@ -80,4 +76,6 @@ SortBy.prototype.sortByMax = function (){
 
 var sortBy = new SortBy();
 
-// addGoods.getGoods();
+var elem = document.getElementById('max');
+events.on(elem, "click", sortBy.sortByMax);
+
