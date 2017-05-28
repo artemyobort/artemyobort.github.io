@@ -10,6 +10,20 @@ function SortBy(){
 
 SortBy.prototype.sortByMax = function (){
 	var getDb = JSON.parse(data.read('db'));
+	var sortDb = getDb.products.sort(function(a,b){
+			return b.price - a.price;
+		});
+
+	var arrDb = [];
+
+		for (i = 0; i < sortDb.length; i++){
+			arrDb[i] = sortDb[i];
+		}
+
+		// console.log(arrDb);
+		// console.log( typeof arrDb);
+	
+
 	var addGoods = document.getElementById('goods');
 	  addGoods.innerHTML = '';
 
@@ -19,11 +33,8 @@ SortBy.prototype.sortByMax = function (){
 		className: 'products clearfix'
 	});
 
-	getDb.products.forEach(function(product, price) {
-		getDb.products.sort(function(a,b){
-			return b.price - a.price;
-		});
-
+	arrDb.forEach(function(product) {
+		
 		var addLi = markup.create({
 			tag: 'li',
 			parent: addUl,
@@ -73,6 +84,19 @@ SortBy.prototype.sortByMax = function (){
 
 SortBy.prototype.sortByMin = function (){
 	var getDb = JSON.parse(data.read('db'));
+	var sortDb = getDb.products.sort(function(a,b){
+			return a.price - b.price;
+		});
+
+	var arrDb = [];
+
+		for (i = 0; i < sortDb.length; i++){
+			arrDb[i] = sortDb[i];
+		}
+
+
+
+
 	var addGoods = document.getElementById('goods');
 	  addGoods.innerHTML = '';
 
@@ -82,11 +106,8 @@ SortBy.prototype.sortByMin = function (){
 		className: 'products clearfix'
 	});
 
-	getDb.products.forEach(function(product, price) {
-		getDb.products.sort(function(a,b){
-			return a.price - b.price;
-		});
-
+	arrDb.forEach(function(product, price) {
+		
 		var addLi = markup.create({
 			tag: 'li',
 			parent: addUl,
