@@ -7,8 +7,6 @@ function AddCategories(){
 }
 
 AddCategories.prototype.getCategories = function (){
-	// var getDb = data.read('db');
-	// 	getDb = JSON.parse(getDb);
 
 	var getDb = JSON.parse(data.read('db'));
 
@@ -21,18 +19,20 @@ AddCategories.prototype.getCategories = function (){
 	  });
 
 	  getDb.categories.forEach(function(category) {
-	    // console.log(category.title);
+	    
 	    var addLi = markup.create({
 	      tag: 'li',
 	      parent: addUl
 	    });
 
-	    var addA = markup.create({
-	    	tag: 'a',
-	    	content: category.title,
+	    var addInput = markup.create({
+	    	tag: 'input',
 	    	parent: addLi,
 	    	attrs: [
-	    		{href: "#"}
+	    		{type: "button"},
+	    		{onclick: "selectCategory(category)"},
+	    		{value: category.title}
+	    		
 	    	]
 	    });
 	});

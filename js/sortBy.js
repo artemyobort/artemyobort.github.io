@@ -19,9 +19,6 @@ SortBy.prototype.sortByMax = function (){
 		for (i = 0; i < sortDb.length; i++){
 			arrDb[i] = sortDb[i];
 		}
-
-		// console.log(arrDb);
-		// console.log( typeof arrDb);
 	
 
 	var addGoods = document.getElementById('goods');
