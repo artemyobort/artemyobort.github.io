@@ -71,10 +71,34 @@ SortBy.prototype.sortByMax = function (){
 			parent: addA
 		});
 
+		var divInfo = markup.create({
+			parent: addLi,
+			className: 'row'
+		});
+
+		var divPrice = markup.create({
+			parent: divInfo,
+			className: 'col-md-6'
+		});
+
 		var addHprice = markup.create({
 			tag: 'h4',
 			content: product.price,
-			parent: addLi
+			parent: divPrice
+		});
+
+		var divBtn = markup.create({
+			parent: divInfo,
+			className: 'col-md-6'
+		});
+
+		var input = markup.create({
+			tag: 'input',
+			parent: divBtn,
+			attrs: [
+				{type: 'button'},
+				{value: 'add'}
+			]
 		});
 	});
 };
@@ -103,7 +127,7 @@ SortBy.prototype.sortByMin = function (){
 		className: 'products clearfix'
 	});
 
-	arrDb.forEach(function(product, price) {
+	arrDb.forEach(function(product) {
 		
 		var addLi = markup.create({
 			tag: 'li',
@@ -144,10 +168,34 @@ SortBy.prototype.sortByMin = function (){
 			parent: addA
 		});
 
+		var divInfo = markup.create({
+			parent: addLi,
+			className: 'row'
+		});
+
+		var divPrice = markup.create({
+			parent: divInfo,
+			className: 'col-md-6'
+		});
+
 		var addHprice = markup.create({
 			tag: 'h4',
 			content: product.price,
-			parent: addLi
+			parent: divPrice
+		});
+
+		var divBtn = markup.create({
+			parent: divInfo,
+			className: 'col-md-6'
+		});
+
+		var input = markup.create({
+			tag: 'input',
+			parent: divBtn,
+			attrs: [
+				{type: 'button'},
+				{value: 'add'}
+			]
 		});
 	});
 };

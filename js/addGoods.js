@@ -11,6 +11,7 @@ AddGoods.prototype.getGoods = function (){
 	// 	getDb = JSON.parse(getDb);
 
 	var getDb = JSON.parse(data.read('db'));
+	// var arrGoodsToStash = [];
 
 	var addGoods = document.getElementById('goods');
 	  addGoods.innerHTML = '';
@@ -61,14 +62,45 @@ AddGoods.prototype.getGoods = function (){
 			parent: addA
 		});
 
+		var divInfo = markup.create({
+			parent: addLi,
+			className: 'row'
+		});
+
+		var divPrice = markup.create({
+			parent: divInfo,
+			className: 'col-md-6'
+		});
+
 		var addHprice = markup.create({
 			tag: 'h4',
 			content: product.price,
-			parent: addLi
+			parent: divPrice
 		});
-	});
 
+		var divBtn = markup.create({
+			parent: divInfo,
+			className: 'col-md-6'
+		});
+
+		var input = markup.create({
+			tag: 'input',
+			parent: divBtn,
+			attrs: [
+				{type: 'button'},
+				{value: 'add'}
+			]
+		});
+
+		productsFiltered = [];
+		input.onclick = function(event) {
+			productsFiltered = addGoodsToStash(product);
+			arrGoodsToStash.push(productsFiltered);
+			console.log(arrGoodsToStash);
+		};
+	});
 };
+var arrGoodsToStash = [];
 
 var addGoods = new AddGoods();
 

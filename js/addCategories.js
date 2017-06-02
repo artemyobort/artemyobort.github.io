@@ -35,9 +35,9 @@ AddCategories.prototype.getCategories = function (){
 	    	]
 	    });
 		
-		var arrFiltered = [];
+		var categoriesFiltered = [];
 		addInput.onclick = function(event) {
-			arrFiltered = selectCategory(category);
+			categoriesFiltered = selectCategory(category);
 			
 			var addGoods = document.getElementById('goods');
 		  	addGoods.innerHTML = '';
@@ -50,7 +50,7 @@ AddCategories.prototype.getCategories = function (){
 
 			for (var i = 0; i < getDb.products.length; i++) {
 				var product = getDb.products[i];
-				if (!arrFiltered.filter(function(category) { return category.id === product.category}).length){
+				if (!categoriesFiltered.filter(function(category) { return category.id === product.category}).length){
 				    continue;
 				}
 
@@ -92,10 +92,34 @@ AddCategories.prototype.getCategories = function (){
 				    parent: addA
 				});
 
+				var divInfo = markup.create({
+					parent: addLi,
+					className: 'row'
+				});
+
+				var divPrice = markup.create({
+					parent: divInfo,
+					className: 'col-md-6'
+				});
+
 				var addHprice = markup.create({
-				    tag: 'h4',
-				    content: product.price,
-				    parent: addLi
+					tag: 'h4',
+					content: product.price,
+					parent: divPrice
+				});
+
+				var divBtn = markup.create({
+					parent: divInfo,
+					className: 'col-md-6'
+				});
+
+				var input = markup.create({
+					tag: 'input',
+					parent: divBtn,
+					attrs: [
+						{type: 'button'},
+						{value: 'add'}
+					]
 				});
 			};
 		};
