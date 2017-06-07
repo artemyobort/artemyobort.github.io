@@ -34,10 +34,14 @@ AddCategories.prototype.getCategories = function (){
 	    		{value: category.title}
 	    	]
 	    });
+
 		
 		var categoriesFiltered = [];
 		addInput.onclick = function(event) {
 			categoriesFiltered = selectCategory(category);
+			var selectProductsFiltered = [];
+			var arrGoodsToStash = [];
+			data.create('stash', JSON.stringify(arrGoodsToStash));
 			
 			var addGoods = document.getElementById('goods');
 		  	addGoods.innerHTML = '';
@@ -50,9 +54,14 @@ AddCategories.prototype.getCategories = function (){
 
 			for (var i = 0; i < getDb.products.length; i++) {
 				var product = getDb.products[i];
+				var select;
 				if (!categoriesFiltered.filter(function(category) { return category.id === product.category}).length){
+						select = product;
 				    continue;
+				} else {
+					select = product;
 				}
+
 
 				var addLi = markup.create({
 					tag: 'li',
@@ -121,6 +130,14 @@ AddCategories.prototype.getCategories = function (){
 						{value: 'add'}
 					]
 				});
+
+				input.onclick = function(event) {
+				selectProductsFiltered = addGoodsToStash(select);
+				arrGoodsToStash.push(selectProductsFiltered);
+				data.update('stash', JSON.stringify(arrGoodsToStash));
+				// var stash = JSON.parse(data.read('stash'));
+				//  console.log(arrGoodsToStash);
+				};
 			};
 		};
 	});

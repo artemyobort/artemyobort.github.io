@@ -10,6 +10,9 @@ function SortBy(){
 
 SortBy.prototype.sortByMax = function (){
 	var getDb = JSON.parse(data.read('db'));
+	var selectProductsFiltered = [];
+	var arrGoodsToStash = [];
+	data.create('stash', JSON.stringify(arrGoodsToStash));
 	var sortDb = getDb.products.sort(function(a,b){
 			return b.price - a.price;
 		});
@@ -100,23 +103,31 @@ SortBy.prototype.sortByMax = function (){
 				{value: 'add'}
 			]
 		});
+
+		input.onclick = function(event) {
+			selectProductsFiltered = addGoodsToStash(product);
+			arrGoodsToStash.push(selectProductsFiltered);
+			data.update('stash', JSON.stringify(arrGoodsToStash));
+			// var stash = JSON.parse(data.read('stash'));
+			//  console.log(arrGoodsToStash);
+		};
 	});
 };
 
 SortBy.prototype.sortByMin = function (){
 	var getDb = JSON.parse(data.read('db'));
+	var selectProductsFiltered = [];
+	var arrGoodsToStash = [];
+	data.create('stash', JSON.stringify(arrGoodsToStash));
 	var sortDb = getDb.products.sort(function(a,b){
 			return a.price - b.price;
 		});
 
 	var arrDb = [];
 
-		for (i = 0; i < sortDb.length; i++){
-			arrDb[i] = sortDb[i];
-		}
-
-
-
+	for (i = 0; i < sortDb.length; i++){
+		arrDb[i] = sortDb[i];
+	}
 
 	var addGoods = document.getElementById('goods');
 	  addGoods.innerHTML = '';
@@ -197,6 +208,14 @@ SortBy.prototype.sortByMin = function (){
 				{value: 'add'}
 			]
 		});
+
+		input.onclick = function(event) {
+			selectProductsFiltered = addGoodsToStash(product);
+			arrGoodsToStash.push(selectProductsFiltered);
+			data.update('stash', JSON.stringify(arrGoodsToStash));
+			// var stash = JSON.parse(data.read('stash'));
+			//  console.log(arrGoodsToStash);
+		};
 	});
 };
 

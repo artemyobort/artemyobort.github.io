@@ -1,8 +1,14 @@
 function StashView(){
-
+	var stashDb = data.read('stash');
+  	if (!stashDb) {
+	    stashDb = [];
+	    data.update('stash', JSON.stringify(stashDb));
+  	}
 }
 
 StashView.prototype.showStash = function(){
+	var stashDb = JSON.parse(data.read('stash'));
+	 // console.log(stashDb);
 	var addGoods = document.getElementById('goods');
 	  addGoods.innerHTML = '';
 
@@ -12,7 +18,7 @@ StashView.prototype.showStash = function(){
 		className: 'products clearfix'
 	});
 
-	arrGoodsToStash.forEach(function(product) {
+	stashDb.forEach(function(product) {
 		
 		var addLi = markup.create({
 			tag: 'li',
