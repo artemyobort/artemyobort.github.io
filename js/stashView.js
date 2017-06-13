@@ -7,7 +7,7 @@ function StashView(){
 }
 
 StashView.prototype.showStash = function(){
-	var stashDb = JSON.parse(data.read('stash'));
+	// var stashDb = JSON.parse(data.read('stash'));
 	 // console.log(stashDb);
 	var addGoods = document.getElementById('goods');
 	  addGoods.innerHTML = '';
@@ -18,7 +18,7 @@ StashView.prototype.showStash = function(){
 		className: 'products clearfix'
 	});
 
-	stashDb.forEach(function(product) {
+	arrGoodsToStash.forEach(function(product) {
 		
 		var addLi = markup.create({
 			tag: 'li',

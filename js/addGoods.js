@@ -9,8 +9,8 @@ function AddGoods(){
 AddGoods.prototype.getGoods = function (){
 	var getDb = JSON.parse(data.read('db'));
 	var selectProductsFiltered = [];
-	var arrGoodsToStash = [];
-	data.create('stash', JSON.stringify(arrGoodsToStash));
+	// var arrGoodsToStash = [];
+	// data.create('stash', JSON.stringify(arrGoodsToStash));
 	
 	var addGoods = document.getElementById('goods');
 	  addGoods.innerHTML = '';
@@ -95,7 +95,7 @@ AddGoods.prototype.getGoods = function (){
 		input.onclick = function(event) {
 			selectProductsFiltered = addGoodsToStash(product);
 			arrGoodsToStash.push(selectProductsFiltered);
-			data.update('stash', JSON.stringify(arrGoodsToStash));
+			// data.update('stash', JSON.stringify(arrGoodsToStash));
 			// var stash = JSON.parse(data.read('stash'));
 			//  console.log(arrGoodsToStash);
 		};

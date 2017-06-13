@@ -11,8 +11,8 @@ function SortBy(){
 SortBy.prototype.sortByMax = function (){
 	var getDb = JSON.parse(data.read('db'));
 	var selectProductsFiltered = [];
-	var arrGoodsToStash = [];
-	data.create('stash', JSON.stringify(arrGoodsToStash));
+	// var arrGoodsToStash = [];
+	// data.create('stash', JSON.stringify(arrGoodsToStash));
 	var sortDb = getDb.products.sort(function(a,b){
 			return b.price - a.price;
 		});
@@ -107,7 +107,7 @@ SortBy.prototype.sortByMax = function (){
 		input.onclick = function(event) {
 			selectProductsFiltered = addGoodsToStash(product);
 			arrGoodsToStash.push(selectProductsFiltered);
-			data.update('stash', JSON.stringify(arrGoodsToStash));
+			// data.update('stash', JSON.stringify(arrGoodsToStash));
 			// var stash = JSON.parse(data.read('stash'));
 			//  console.log(arrGoodsToStash);
 		};
@@ -117,8 +117,8 @@ SortBy.prototype.sortByMax = function (){
 SortBy.prototype.sortByMin = function (){
 	var getDb = JSON.parse(data.read('db'));
 	var selectProductsFiltered = [];
-	var arrGoodsToStash = [];
-	data.create('stash', JSON.stringify(arrGoodsToStash));
+	// var arrGoodsToStash = [];
+	// data.create('stash', JSON.stringify(arrGoodsToStash));
 	var sortDb = getDb.products.sort(function(a,b){
 			return a.price - b.price;
 		});
@@ -212,7 +212,7 @@ SortBy.prototype.sortByMin = function (){
 		input.onclick = function(event) {
 			selectProductsFiltered = addGoodsToStash(product);
 			arrGoodsToStash.push(selectProductsFiltered);
-			data.update('stash', JSON.stringify(arrGoodsToStash));
+			// data.update('stash', JSON.stringify(arrGoodsToStash));
 			// var stash = JSON.parse(data.read('stash'));
 			//  console.log(arrGoodsToStash);
 		};

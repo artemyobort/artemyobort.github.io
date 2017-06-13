@@ -40,8 +40,8 @@ AddCategories.prototype.getCategories = function (){
 		addInput.onclick = function(event) {
 			categoriesFiltered = selectCategory(category);
 			var selectProductsFiltered = [];
-			var arrGoodsToStash = [];
-			data.create('stash', JSON.stringify(arrGoodsToStash));
+			// var arrGoodsToStash = [];
+			// data.create('stash', JSON.stringify(arrGoodsToStash));
 			
 			var addGoods = document.getElementById('goods');
 		  	addGoods.innerHTML = '';
@@ -56,12 +56,10 @@ AddCategories.prototype.getCategories = function (){
 				var product = getDb.products[i];
 				var select;
 				if (!categoriesFiltered.filter(function(category) { return category.id === product.category}).length){
-						select = product;
-				    continue;
-				} else {
-					select = product;
-				}
+					continue;
+				} 
 
+				let categoryProduct = product;
 
 				var addLi = markup.create({
 					tag: 'li',
@@ -132,9 +130,9 @@ AddCategories.prototype.getCategories = function (){
 				});
 
 				input.onclick = function(event) {
-				selectProductsFiltered = addGoodsToStash(select);
+				selectProductsFiltered = addGoodsToStash(categoryProduct);
 				arrGoodsToStash.push(selectProductsFiltered);
-				data.update('stash', JSON.stringify(arrGoodsToStash));
+				// data.update('stash', JSON.stringify(arrGoodsToStash));
 				// var stash = JSON.parse(data.read('stash'));
 				//  console.log(arrGoodsToStash);
 				};

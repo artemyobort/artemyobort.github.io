@@ -78,3 +78,5 @@ data.create('db', JSON.stringify(
     ]
   }
 ));
+
+var arrGoodsToStash = [];
