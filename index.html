@@ -1,71 +1,102 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>test shop</title>
-    <link rel="stylesheet" type="text/css" href="css/reset.css">
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>BackboneUserList</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<link href="vendors/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-  </head>
-  <body>
-  	<div class="container">
-  		<div class="row">
-  			<header class="col-md-12">
-  				<h1>Shop</h1>
-  			</header>
-  		</div>
-  		<div class="row">
-  			<aside class="col-md-4">
-  				<h3>Categories:</h3>
-          <div id="categories">
-  				</div>
-  			</aside>
-  			<content class="col-md-8">
-          <div class="row">
-            <div class="col-md-4">
-              <h3>Goods:</h3>
-            </div>
-            <div class="col-md-6">
-              <div class="dropdown">
-                <div class="btn-group" role="group" aria-label="...">
-                  <button type="button" class="btn btn-default" id="stash">Stash</button>
-                  <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Sort By:
-                      <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a id="max" href="#">max price</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a id="min" href="#">min prcie</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="goods">
-          </div>
-  			</content>
-  		</div>
-  		<div class="row">
-  			<footer class="col-md-12">
-  				<p>&copy; JSLearn</p>
-  			</footer>
-  		</div>
-  	</div>
-    <script type="text/javascript" src="services/data.js"></script>
-    <script type="text/javascript" src="services/murkup.js"></script>
-    <script type="text/javascript" src="services/events.js"></script>
-    <script type="text/javascript" src="js/db.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="vendors/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/eventCategories.js"></script>
-    <script type="text/javascript" src="js/addGoodsToStash.js"></script>
-    <script type="text/javascript" src="js/addCategories.js"></script>
-    <script type="text/javascript" src="js/addGoods.js"></script>
-    <script type="text/javascript" src="js/sortBy.js"></script>
-    <script type="text/javascript" src="js/stashView.js"></script>
-  </body>
+</head>
+<body>
+
+<!-- Я старался сделать по максимуму, но у меня не получилось, сделать так, чтобы работало -->
+	<div id="container">
+	<!-- контейнер для вставки шаблона главной view contacktsView -->
+		<div id="contackts">
+
+		</div>
+	</div>	
+
+<!-- шаблон главной view -->
+	<script type="text/template" id="contacktsView">
+		<div class="col-md-12" id="">
+			<h2>BackboneUserList</h2>
+			<span id="usersListBtn">
+				<a href="#users"><button class="btn btn-success usersList">users</button></a>
+			</span>
+			</span>
+			<span id="statsListBtn">
+				<a href="#stats"><button class="btn btn-info statsList">stats</button></a>
+			</span>
+			<button class="btn btn-primary updateDbase">updateDb</button>
+		</div>
+		<!-- кусок главной view по статистике, хотел сделать отображение через Router но не пойму, чего оно не робит -->
+		<div class="hero-unit hide" id="page-second">
+			<div class="panel panel-default">
+				<div class="panel-heading">Stats</div>
+				<table class="table table-bordered">
+				  <thead>
+				    <tr>
+				  		<th>Gender:</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td colspan="2">male: <span class="male">0</span></td>
+				      <td colspan="3">female: <span class="female">0</span></td>
+				    </tr>
+				    <tr>
+				      <td>mr</td>
+				      <td>miss</td>
+				      <td>ms</td>
+				      <td>mrs</td>
+				      <td>mansieur</td>
+				    </tr>
+				    <tr>
+				      <td class="mr">0</td>
+				      <td class="miss">0</td>
+				      <td class="ms">0</td>
+				      <td class="mrs">0</td>
+				      <td class="mansieur">0</td>
+				    </tr>
+				  </tbody>
+				</table>
+			</div>
+		</div>
+		<div class="hero-unit" id="page-first">
+			<div class="col-md-12">
+
+			<!-- контейнер для view клиентов contacktView-->
+				<div class="contacktsList">
+					
+				</div>
+			</div>
+		</div>
+	</script>
+
+
+<!-- шаблон view клиентов -->
+	<script type="text/template" id="contacktView">
+		<div class="col-md-4"> 
+			<img src="<%= picture.large %>" alt="name">
+		</div>
+		<div class="col-md-8">
+            <h2><%= name.first %><span>   </span><%= name.last %><span class="reg"><%= dob.registered %></span></h2>
+            <dl>
+				<dt>gender:</dt><dd><%= gender %></dd>
+                <dt>City:</dt><dd><%= location.city %></dd>
+            </dl>
+        </div>
+	</script>
+
+	
+	<script type="text/javascript" src="vendors/jquery.js"></script>
+	<script type="text/javascript" src="vendors/underscore.js"></script>
+	<script type="text/javascript" src="vendors/backbone.js"></script>
+	<script type="text/javascript" src="AjaxClients.js"></script>
+	<script type="text/javascript" src="models/ModelList.js"></script>
+	<script type="text/javascript" src="views/ClientView.js"></script>
+	<script type="text/javascript" src="views/MainView.js"></script>
+	<script type="text/javascript" src="Router.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</body>
 </html>
