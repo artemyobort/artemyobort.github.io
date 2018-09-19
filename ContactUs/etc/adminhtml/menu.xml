@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Brander_ContactUs::contactus"
+             title="Contact Us" translate="title" module="Brander_ContactUs"
+             sortOrder="15"
+             resource="Brander_ContactUs::contactus"
+        />
+        <add id="Brander_ContactUs::contactus_grid"
+             title="ContactUs Grid" translate="title" module="Brander_ContactUs"
+             sortOrder="100" parent="Brander_ContactUs::contactus"
+             action="brander_contactus/grid"
+             resource="Brander_ContactUs::contactus_grid"
+        />
+    </menu>
+</config>
