@@ -22,7 +22,7 @@ class UpgradeData implements UpgradeDataInterface
      * @param   ModuleContextInterface      $context
      * @return  void
      */
-    public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
+    public function upgrade( ModuleDataSetupInterface $setup, ModuleContextInterface $context )
     {
         $setup->startSetup();
         if ($context->getVersion()
@@ -34,11 +34,13 @@ class UpgradeData implements UpgradeDataInterface
                 [
                     'name'     => 'Test 1',
                     'email'    => 'test1@gmail.com',
+                    'phone'    => '+79379992',
                     'question' => 'hola amigos!'
                 ],
                 [
                     'name'     => 'Test 2',
                     'email'    => 'test2@gmail.com',
+                    'phone'    => '+79379992',
                     'question' => 'hola amigos!'
                 ],
             ];

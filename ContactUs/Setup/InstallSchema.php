@@ -15,14 +15,14 @@ use \Magento\Framework\Setup\ModuleContextInterface;
 class InstallSchema implements InstallSchemaInterface
 {
     /**
-     * Install contact us table
+     * Install contact us table.
      *
      * @access  public
      * @param   SchemaSetupInterface    $setup
      * @param   ModuleContextInterface  $context
      * @return  void
      */
-    public function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
+    public function install( SchemaSetupInterface $setup, ModuleContextInterface $context )
     {
         $setup->startSetup();
         $tableName = $setup->getTable('brander_contact_us');
@@ -53,6 +53,13 @@ class InstallSchema implements InstallSchemaInterface
                     35,
                     ['nullable' => false],
                     'Client Email'
+                )
+                ->addColumn(
+                    'phone',
+                    Table::TYPE_TEXT,
+                    35,
+                    ['nullable' => false],
+                    'Client Phone'
                 )
                 ->addColumn(
                     'question',
