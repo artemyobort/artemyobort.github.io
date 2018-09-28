@@ -1,32 +1,33 @@
-<form class="form contact-inchoo"
-      action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>"
+<form class="form contact"
+      action="<?php /* @escapeNotVerified */ echo $block->escapeUrl($block->getFormAction()); ?>"
       id="contact-form"
       method="post"
       data-hasrequired="* Required Fields"
+      data-mage-init='{"validation":{}}'
 >
     <fieldset class="fieldset">
-        <div class="field required">
-            <label class="label" for="field1"><span><?php echo __('Your Name:'); ?></span></label>
+        <div class="field name required">
+            <label class="label" for="field1"><span><?php echo $block->escapeHtml(__('Your Name:')); ?></span></label>
             <div class="control">
-                <input name="name" id="field1" title="<?php echo __('Name'); ?>" value="" class="input-text required" type="text" />
+                <input name="name" id="field1" title="<?php echo $block->escapeHtmlAttr(__('Name')); ?>" value="" class="input-text" type="text" data-validate="{required:true}"/>
             </div>
         </div>
-        <div class="field required">
-            <label for="email_address" class="label"><span><?php echo __('Your Email:'); ?></span></label>
+        <div class="field email required">
+            <label for="email_address" class="label"><span><?php echo $block->escapeHtml(__('Your Email:')); ?></span></label>
             <div class="control">
-                <input type="email" name="email" id="email_address" value="" title="<?php echo __('Email'); ?>" class="input-text" data-validate="{required:true, 'validate-email':true}">
+                <input type="email" name="email" id="email_address" value="" title="<?php echo $block->escapeHtmlAttr(__('Email')); ?>" class="input-text" data-validate="{required:true, 'validate-email':true}">
             </div>
         </div>
-        <div class="field required">
-            <label for="phone" class="label"><span><?php echo __('Your Phone:'); ?></span></label>
+        <div class="field telephone required">
+            <label for="telephone" class="label"><span><?php echo $block->escapeHtml(__('Your Phone:')); ?></span></label>
             <div class="control">
-                <input type="email" name="email" id="phone" value="" title="<?php echo __('Phone'); ?>" class="input-text" data-validate="{required:true, 'validate-number':true}">
+                <input type="text" name="telephone" id="telephone" value="" title="<?php echo $block->escapeHtmlAttr(__('Phone')); ?>" class="input-text" data-validate="{required:true, 'validate-number':true}">
             </div>
         </div>
         <div class="field">
-            <label class="label" for="field3"><span><?php echo __('Question:'); ?></span></label>
+            <label class="label" for="field3"><span><?php echo $block->escapeHtml(__('Question:')); ?></span></label>
             <div class="control">
-                <textarea rows="10" cols="45" name="question" id="field3" title="<?php echo __('Question'); ?>" value=""></textarea>
+                <textarea rows="10" cols="45" name="question" id="field3" title="<?php echo $block->escapeHtmlAttr(__('Question')); ?>" value=""></textarea>
             </div>
         </div>
         <?php echo $block->getChildHtml('form.additional.info'); ?>
@@ -34,8 +35,8 @@
     <div class="actions-toolbar">
         <div class="primary">
             <input type="hidden" name="hideit" id="hideit" value="" />
-            <button type="submit" title="Submit" class="action submit primary">
-                <span>Submit</span>
+            <button type="submit" title="<?php echo $block->escapeHtmlAttr(__('Submit')); ?>" class="action submit primary">
+                <span><?php echo $block->escapeHtml(__('Submit')); ?></span>
             </button>
         </div>
     </div>

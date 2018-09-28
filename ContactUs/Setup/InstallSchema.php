@@ -55,7 +55,7 @@ class InstallSchema implements InstallSchemaInterface
                     'Client Email'
                 )
                 ->addColumn(
-                    'phone',
+                    'telephone',
                     Table::TYPE_TEXT,
                     35,
                     ['nullable' => false],

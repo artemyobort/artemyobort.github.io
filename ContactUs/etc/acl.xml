@@ -3,8 +3,10 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Brander_ContactUs::contactus" title="Contact Us" translate="title" sortOrder="30">
+                <resource id="Brander_ContactUs::contactus" title="Contact Us" translate="title" sortOrder="10">
+                    <resource id="Brander_ContactUs::contactus_grid" title="Contact Us Grid" translate="title" sortOrder="100"/>
                 </resource>
+                <resource id="Brander_ContactUs::settings" title="Settings" translate="title" sortOrder="10" />
             </resource>
         </resources>
     </acl>

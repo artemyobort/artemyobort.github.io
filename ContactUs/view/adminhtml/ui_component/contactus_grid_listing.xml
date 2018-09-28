@@ -78,7 +78,7 @@
                 </item>
             </argument>
         </column>
-        <column name="email">
+        <column name="telephone">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
@@ -88,7 +88,7 @@
                             <item name="required-entry" xsi:type="boolean">true</item>
                         </item>
                     </item>
-                    <item name="label" xsi:type="string" translate="true">Phone</item>
+                    <item name="label" xsi:type="string" translate="true">Telephone</item>
                 </item>
             </argument>
         </column>

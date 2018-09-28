@@ -32,16 +32,16 @@ class UpgradeData implements UpgradeDataInterface
 
             $data = [
                 [
-                    'name'     => 'Test 1',
-                    'email'    => 'test1@gmail.com',
-                    'phone'    => '+79379992',
-                    'question' => 'hola amigos!'
+                    'name'      => 'Test 1',
+                    'email'     => 'test1@gmail.com',
+                    'telephone' => '+79379992',
+                    'question'  => 'hola amigos!'
                 ],
                 [
-                    'name'     => 'Test 2',
-                    'email'    => 'test2@gmail.com',
-                    'phone'    => '+79379992',
-                    'question' => 'hola amigos!'
+                    'name'      => 'Test 2',
+                    'email'     => 'test2@gmail.com',
+                    'telephone' => '+79379992',
+                    'question'  => 'hola amigos!'
                 ],
             ];
 

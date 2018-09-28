@@ -1,6 +1,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
         <add id="Brander_ContactUs::contactus" title="Contact Us" translate="title" module="Brander_ContactUs" sortOrder="20" dependsOnModule="Brander_ContactUs" resource="Brander_ContactUs::contactus"/>
-        <add id="Test_UiGrid::contactus_grid" title="Contact Us Grid" translate="title" module="Brander_ContactUs" sortOrder="10" parent="Brander_ContactUs::contactus" action="contactus" resource="Brander_ContactUs::contactus"/>
+        <add id="Brander_ContactUs::contactus_grid" title="Contact Us Grid" translate="title" module="Brander_ContactUs" sortOrder="10" parent="Brander_ContactUs::contactus" action="contactus" resource="Brander_ContactUs::contactus_grid"/>
+        <add id="Brander_ContactUs::settings" title="Settings" module="Brander_ContactUs" sortOrder="20" parent="Brander_ContactUs::contactus" action="adminhtml/system_config/edit/section/settings" resource="Brander_ContactUs::settings"/>
     </menu>
 </config>
