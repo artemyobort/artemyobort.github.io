@@ -4,6 +4,7 @@ namespace Brander\ContactUs\Api\Data;
 
 /**
  * Interface ConfigInterface module configuration
+ *
  * @package Brander\ContactUs\Api\Data
  * @api
  */
@@ -12,7 +13,7 @@ interface ConfigInterface
     /**
      * Enabled contacus form config path.
      */
-    const XML_PATH_ENABLED = 'settings/general/enable';
+    const XML_PATH_ENABLED = 'contactus_settings/general/enable';
 
     /**
      * Check if contacts module is enabled.

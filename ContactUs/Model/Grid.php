@@ -14,6 +14,25 @@ use Brander\ContactUs\Model\ResourceModel\Grid as GridResource;
 class Grid extends AbstractModel implements GridInterface
 {
     /**
+     * CMS page cache tag.
+     */
+    const CACHE_TAG = 'contact_us_grid';
+
+    /**
+     * @access  protected
+     * @var     string
+     */
+    protected $_cacheTag = 'contact_us_grid';
+
+    /**
+     * Prefix of model events names.
+     *
+     * @access  protected
+     * @var     string
+     */
+    protected $_eventPrefix = 'contact_us_grid';
+
+    /**
      * Grid construct method.
      *
      * @access protected
@@ -70,6 +89,22 @@ class Grid extends AbstractModel implements GridInterface
     public function setEmail( string $email )
     {
         return $this->setData(self::EMAIL, $email);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTelephone()
+    {
+        return $this->_getData(self::TELEPHONE);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTelephone( string $telephone )
+    {
+        return $this->setData(self::TELEPHONE, $telephone);
     }
 
     /**

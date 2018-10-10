@@ -12,13 +12,16 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 class ContactUsConfig implements ConfigInterface
 {
     /**
-     * @var ScopeConfigInterface
+     * @access  private
+     * @var     ScopeConfigInterface
      */
     private $scopeConfig;
 
     /**
      * Config constructor.
-     * @param ScopeConfigInterface $scopeConfig
+     *
+     * @access  public
+     * @param   ScopeConfigInterface $scopeConfig
      */
     public function __construct( ScopeConfigInterface $scopeConfig )
     {

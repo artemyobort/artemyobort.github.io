@@ -4,6 +4,7 @@ namespace Brander\ContactUs\Api\Data;
 
 /**
  * GridInterface
+ *
  * @package Brander\ContactUs\Api\Data
  * @api
  */
@@ -18,6 +19,8 @@ interface GridInterface
     const NAME       = 'name';
 
     const EMAIL      = 'email';
+
+    const TELEPHONE  = 'telephone';
 
     const QUESTION   = 'question';
 
@@ -78,6 +81,23 @@ interface GridInterface
     public function setEmail( string $email );
 
     /**
+     * Method to get contactus post telephone.
+     *
+     * @access public
+     * @return string
+     */
+    public function getTelephone();
+
+    /**
+     * Method to set contactus post telephone.
+     *
+     * @access  public
+     * @param   string  $telephone
+     * @return  $this
+     */
+    public function setTelephone( string $telephone );
+
+    /**
      * Method to get contactus post question.
      *
      * @access public
@@ -105,6 +125,7 @@ interface GridInterface
     /**
      * Method to set contactus post created_at.
      *
+     * @access  public
      * @param   string  $createdAt
      * @return  $this
      */

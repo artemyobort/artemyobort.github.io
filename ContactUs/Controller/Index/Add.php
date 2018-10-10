@@ -17,17 +17,20 @@ use Magento\Framework\App\Request\DataPersistorInterface;
 class Add extends Action
 {
     /**
-     * @var ConfigInterface
+     * @access  private
+     * @var     ConfigInterface
      */
     private $_contactUsConfig;
 
     /**
-     * @var GridInterface
+     * @access  protected
+     * @var     GridInterface
      */
     protected $_gridContactUsModel;
 
     /**
-     * @var DataPersistorInterface
+     * @access  protected
+     * @var     DataPersistorInterface
      */
     protected $_dataPersistor;
 
@@ -55,6 +58,9 @@ class Add extends Action
 
     /**
      * Method to get handle contact us form post request.
+     *
+     * @access  public
+     * @return  \Magento\Framework\Controller\Result\Redirect
      */
     public function execute()
     {

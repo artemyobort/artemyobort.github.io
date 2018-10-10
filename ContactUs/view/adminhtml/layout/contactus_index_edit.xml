@@ -1,10 +1,10 @@
+<?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <head>
-        <title>Contact Us Grid</title>
-    </head>
+    <update handle="styles"/>
+    <update handle="editor"/>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="contactus_grid_listing"/>
+            <uiComponent name="contacus_edit_form"/>
         </referenceContainer>
     </body>
 </page>

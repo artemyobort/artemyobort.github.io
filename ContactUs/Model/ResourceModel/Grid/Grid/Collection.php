@@ -15,17 +15,17 @@ use Brander\ContactUs\Model\ResourceModel\Grid\Collection as GridCollection;
  */
 class Collection extends GridCollection implements SearchResultInterface
 {
-
     /**
-     * @var AggregationInterface
+     * @access  protected
+     * @var     AggregationInterface
      */
     protected $aggregations;
 
     /**
-     * Initialization here
+     * Collection construct method.
      *
-     * @access protected
-     * @return void
+     * @access  protected
+     * @return  void
      */
     protected function _construct()
     {
@@ -71,7 +71,8 @@ class Collection extends GridCollection implements SearchResultInterface
     /**
      * Get search criteria.
      *
-     * @return \Magento\Framework\Api\SearchCriteriaInterface|null
+     * @access  public
+     * @return  \Magento\Framework\Api\SearchCriteriaInterface|null
      */
     public function getSearchCriteria()
     {
@@ -93,7 +94,8 @@ class Collection extends GridCollection implements SearchResultInterface
     /**
      * Get total count.
      *
-     * @return int
+     * @accss   public
+     * @return  int
      */
     public function getTotalCount()
     {

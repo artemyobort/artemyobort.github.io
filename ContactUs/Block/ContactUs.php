@@ -15,8 +15,8 @@ class ContactUs extends Template
      * ContactUs construct method.
      *
      * @access  public
-     * @param   \Magento\Framework\View\Element\Template\Context    $context
-     * @param   array                                               $data
+     * @param   Context    $context
+     * @param   array      $data
      */
     public function __construct( Context $context, array $data = [] )
     {

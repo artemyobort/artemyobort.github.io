@@ -17,7 +17,8 @@ use Magento\Framework\Exception\NotFoundException;
 class Index extends Action
 {
     /**
-     * @var ConfigInterface
+     * @access  protected
+     * @var     ConfigInterface
      */
     protected $_contactUsConfig;
 
