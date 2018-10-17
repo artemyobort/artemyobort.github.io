@@ -3,26 +3,22 @@
 ?>
 
 <?php if ($block->isKnockoutForm()): ?>
-    <div id="contactus-form-component" data-bind="scope:'contactus-form'">
+    <div id="contactus-form-component" data-bind="scope:'contactus'">
+
         <!-- ko template: getTemplate() --><!-- /ko -->
+
         <script type="text/x-magento-init">
-            {
-                "#contactus-form-component": {
-                    "Magento_Ui/js/core/app": {
-                       "components": {
-                            "contactus-form": {
-                                "component": "Brander_ContactUs/js/contactus-form-component",
-                                "postName": "<?php echo $block->getUserData('name'); ?>",
-                                "postEmail": "<?php echo $block->getUserData('email'); ?>",
-                                "postPhone": "<?php echo $block->getUserData('telephone'); ?>",
-                                "postQuestion": "<?php echo $block->getUserData('question'); ?>",
-                                "ajaxUrl" : "<?php echo $block->getAddUrlAction(); ?>"
-                            }
-                        }
-                    }
-                }
-            }
+          {
+              "#contactus-form-component": {
+                  "Magento_Ui/js/core/app": <?php echo /* @escapeNotVerified */ $block->getJsLayout();?>
+              }
+          }
         </script>
+
+        <script type="text/javascript">
+          window.formData = <?php echo /* @escapeNotVerified */ $block->getFormData() ?>;
+        </script>
+
     </div>
 <?php else: ?>
     <form class="form contact"

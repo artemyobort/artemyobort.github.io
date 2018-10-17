@@ -7,7 +7,20 @@
     <referenceBlock name="navigation.sections" remove="true" />
     <referenceContainer name="content">
         <block class="Brander\ContactUs\Block\ContactUs" name="contactForm" template="Brander_ContactUs::contactus_form.phtml" cacheable="false">
+
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="contactus" xsi:type="array">
+                            <item name="component" xsi:type="string">Brander_ContactUs/js/contactus-form-component</item>
+                            <item name="displayArea" xsi:type="string">contactus</item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+
             <container name="form.additional.info" label="Form Additional Info"/>
+
         </block>
     </referenceContainer>
 </body>

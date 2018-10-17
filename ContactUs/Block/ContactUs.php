@@ -3,6 +3,7 @@
 namespace Brander\ContactUs\Block;
 
 use Brander\ContactUs\Helper\Data;
+use Magento\Framework\Json\Encoder;
 use Magento\Framework\View\Element\Template;
 use Brander\ContactUs\Api\Data\ConfigInterface;
 use Magento\Framework\View\Element\Template\Context;
@@ -20,9 +21,19 @@ class ContactUs extends Template
     protected $_contactUsConfig;
 
     /**
+     * @var array|\Magento\Checkout\Block\Checkout\LayoutProcessorInterface[]
+     */
+    protected $_layoutProcessors;
+
+    /**
+     * @var Encoder
+     */
+    protected $_jsonEncoder;
+
+    /**
      * @var Data
      */
-    private $_helper;
+    private $helper;
 
     /**
      * ContactUs construct method.
@@ -31,21 +42,27 @@ class ContactUs extends Template
      * @param   Context             $context
      * @param   ConfigInterface     $contactsConfig
      * @param   Data                $helper
+     * @param   Encoder             $jsonEncoder
+     * @param   array               $layoutProcessors
      * @param   array               $data
      */
     public function __construct(
         Context $context,
         ConfigInterface $contactsConfig,
         Data $helper,
+        Encoder $jsonEncoder,
+        array $layoutProcessors = [],
         array $data = []
     ) {
         parent::__construct($context, $data);
-        $this->_helper = $helper;
+        $this->_jsonEncoder = $jsonEncoder;
         $this->_contactUsConfig = $contactsConfig;
+        $this->_layoutProcessors = $layoutProcessors;
+        $this->helper = $helper;
     }
 
     /**
-     * Get form action URL for POST addcallback request.
+     * Get form action URL for POST add callback request.
      *
      * @access public
      * @return string
@@ -55,10 +72,32 @@ class ContactUs extends Template
         return $this->getUrl($this->getAddUrlAction());
     }
 
+    /**
+     * Retrieve serialized JS layout configuration ready to use in template
+     *
+     * @access public
+     * @return string
+     */
+    public function getJsLayout()
+    {
+        foreach ($this->_layoutProcessors as $processor) {
+            $this->jsLayout = $processor->process($this->jsLayout);
+        }
+
+        return \Zend_Json::encode($this->jsLayout);
+    }
+
+    /**
+     * Method to get return url for ajax request.
+     *
+     * @access  public
+     * @return  string
+     */
     public function getAddUrlAction()
     {
         return 'contactus/index/add';
     }
+
     /**
      * Method to get return contactus's form type store config flag.
      *
@@ -70,21 +109,22 @@ class ContactUs extends Template
         return $this->_contactUsConfig->isKnockoutForm();
     }
 
-    public function getUserData( $key )
+    /**
+     * Method to get return formData
+     *
+     * @access public
+     * @return string
+     */
+    public function getFormData()
     {
-        switch ($key) {
-            case 'name':
-                $result = $this->escapeHtmlAttr($this->_helper->getPostValue('name')
-                          ?: $this->_helper->getUserName());
-                break;
-            case 'email':
-                $result = $this->escapeHtmlAttr($this->_helper->getPostValue('email')
-                          ?: $this->_helper->getUserEmail());
-                break;
-            default:
-                $result = $this->escapeHtmlAttr($this->_helper->getPostValue($key));
-        }
+        $formData = [
+            'name'      => $this->escapeHtmlAttr($this->helper->getPostValue('name') ?: $this->helper->getUserName()),
+            'email'     => $this->escapeHtmlAttr($this->helper->getPostValue('email') ?: $this->helper->getUserEmail()),
+            'telephone' => $this->escapeHtmlAttr($this->helper->getPostValue('telephone')),
+            'question'  => $this->escapeHtmlAttr($this->helper->getPostValue('question')),
+            'ajaxUrl'   => $this->getAddUrlAction()
+        ];
 
-        return $result;
+        return $this->_jsonEncoder->encode($formData);
     }
 }

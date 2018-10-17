@@ -70,6 +70,10 @@ class Add extends Action
         }
 
         $post = $this->getRequest()->getPostValue();
+        if (!$post) {
+            parse_str($this->getRequest()->getContent(), $post);
+        }
+
         try {
             if($this->validatedParams($post)) {
                 $this->_gridContactUsModel->setData($post);
@@ -97,24 +101,37 @@ class Add extends Action
     /**
      * Method to validate post form params.
      *
-     * @access private
-     * @return array
-     * @throws \Exception
+     * @access  private
+     * @param   array       $post
+     * @return  array
+     * @throws  \Exception
      */
-    private function validatedParams()
+    private function validatedParams( array $post = [] )
     {
-        /** @var Request $request */
-        $request = $this->getRequest();
-        if (trim($request->getParam('name')) === '') {
-            throw new LocalizedException(__('Name is missing'));
-        }
-        if (false === strpos($request->getParam('email'), '@')) {
-            throw new LocalizedException(__('Invalid email address'));
-        }
-        if (trim($request->getParam('hideit')) !== '') {
-            throw new \Exception();
+        if ($post) {
+            if (trim($post['name']) === '') {
+                throw new LocalizedException(__('Name is missing'));
+            }
+
+            if (trim($post['email']) === '') {
+                throw new LocalizedException(__('Email is missing'));
+            } elseif(false === strpos($post['email'], '@')) {
+                throw new LocalizedException(__('Invalid email address'));
+            }
+
+            if (trim($post['telephone']) === '') {
+                throw new LocalizedException(__('Telephone is missing'));
+            }
+
+            if (trim($post['question']) === '') {
+                throw new LocalizedException(__('Question is missing'));
+            }
+
+            if (trim($post['hideit']) !== '') {
+                throw new \Exception(__('Hideit error'));
+            }
         }
 
-        return $request->getParams();
+        return $post;
     }
 }

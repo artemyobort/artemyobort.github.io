@@ -1,6 +1,6 @@
 define(
-  ['jquery', 'uiComponent', 'mage/url'],
-  function ($, Component, urlBuilder) {
+  ['jquery', 'uiComponent', 'mage/url', 'mage/storage'],
+  function ($, Component, urlBuilder, storage) {
     'use strict';
     return Component.extend({
       defaults: {
@@ -8,6 +8,7 @@ define(
       },
       initialize: function () {
         this._super();
+        this.formData = window.formData;
       },
       validateForm: function (form) {
         return $(form).validation() && $(form).validation('isValid');
@@ -20,29 +21,27 @@ define(
 
         var input = $('<input>').attr('type', 'hidden').attr('name', 'isAjax').val(1);
         form.append(input);
-        $.ajax({
-          url: urlBuilder.build(this.ajaxUrl),
-          dataType: 'JSON',
-          type: 'POST',
-          data: form.serialize(),
-          success: function (response) {
-            if (response === 'success') {
-              location.reload();
-            }
-          },
+        storage.post(
+          urlBuilder.build(this.formData.ajaxUrl), form.serialize(), false
+        ).done(function (response) {
+          if (response === 'success') {
+            location.reload();
+          }
+        }).fail(function (response) {
+          console.log(response);
         });
       },
       getPostName: function () {
-        return this.postName;
+        return this.formData.name;
       },
       getPostEmail: function () {
-        return this.postEmail;
+        return this.formData.email;
       },
       getPostPhone: function () {
-        return this.postPhone;
+        return this.formData.telephone;
       },
       getPostQuestion: function () {
-        return this.postQuestion;
+        return this.formData.question;
       },
     });
   }
