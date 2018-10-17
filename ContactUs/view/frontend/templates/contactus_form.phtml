@@ -2,80 +2,104 @@
 /** @var \Brander\ContactUs\Block\ContactUs $block */
 ?>
 
-<form class="form contact"
-      action="<?php /* @escapeNotVerified */ echo $block->escapeUrl($block->getFormAction()); ?>"
-      id="contact-form"
-      method="post"
-      data-hasrequired="* Required Fields"
-      data-mage-init='{"validation":{}}'
->
-    <fieldset class="fieldset">
-        <legend class="legend"><span><?php echo $block->escapeHtml(__('Write Us')) ?></span></legend><br />
-        <div class="field note no-label"><?php echo $block->escapeHtml(__('And we’ll get back to you as quickly as possible.')) ?></div>
-        <div class="field name required">
-            <label class="label" for="name"><span><?php echo $block->escapeHtml(__('Your Name:')); ?></span></label>
-            <div class="control">
-                <input name="name"
-                       id="name"
-                       title="<?php echo $block->escapeHtmlAttr(__('Name')); ?>"
-                       value="<?php echo $block->escapeHtmlAttr($this->helper('Brander\ContactUs\Helper\Data')->getPostValue('name')
-                           ?: $this->helper('Brander\ContactUs\Helper\Data')->getUserName()); ?>"
-                       class="input-text"
-                       type="text"
-                       data-validate="{required:true}"
-                />
-            </div>
-        </div>
-        <div class="field email required">
-            <label for="email" class="label"><span><?php echo $block->escapeHtml(__('Your Email:')); ?></span></label>
-            <div class="control">
-                <input type="email"
-                       name="email"
-                       id="email"
-                       value="<?php echo $block->escapeHtmlAttr($this->helper('Brander\ContactUs\Helper\Data')->getPostValue('email')
-                           ?: $this->helper('Brander\ContactUs\Helper\Data')->getUserEmail()); ?>"
-                       title="<?php echo $block->escapeHtmlAttr(__('Email')); ?>"
-                       class="input-text"
-                       data-validate="{required:true, 'validate-email':true}"
-                />
-            </div>
-        </div>
-        <div class="field telephone required">
-            <label for="telephone" class="label"><span><?php echo $block->escapeHtml(__('Your Phone:')); ?></span></label>
-            <div class="control">
-                <input type="text"
-                       name="telephone"
-                       id="telephone"
-                       value="<?php echo $block->escapeHtmlAttr($this->helper('Brander\ContactUs\Helper\Data')->getPostValue('telephone')); ?>"
-                       title="<?php echo $block->escapeHtmlAttr(__('Phone')); ?>"
-                       class="input-text"
-                       data-validate="{required:true}"
-                />
-            </div>
-        </div>
-        <div class="field question required">
-            <label class="label" for="field3">
-                <span><?php echo $block->escapeHtml(__('Your Question:')); ?></span>
-            </label>
-            <div class="control">
-                <textarea rows="10"
-                          cols="45"
-                          name="question"
-                          id="field3"
-                          title="<?php echo $block->escapeHtmlAttr(__('Question')); ?>"
-                          value="<?php echo $block->escapeHtmlAttr($this->helper('Brander\ContactUs\Helper\Data')->getPostValue('question')); ?>"
-                          data-validate="{required:true}">
-                </textarea>
-            </div>
-        </div>
-        <?php echo $block->getChildHtml('form.additional.info'); ?>
-    </fieldset>
-    <div class="actions-toolbar">
-        <div class="primary">
-            <input type="hidden" name="hideit" id="hideit" value="" />
-            <button type="submit" title="<?php echo $block->escapeHtmlAttr(__('Submit')); ?>" class="action submit primary">
-                <span><?php echo $block->escapeHtml(__('Submit')); ?></span>
-            </button>
-        </div>
+<?php if ($block->isKnockoutForm()): ?>
+    <div id="contactus-form-component" data-bind="scope:'contactus-form'">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <script type="text/x-magento-init">
+            {
+                "#contactus-form-component": {
+                    "Magento_Ui/js/core/app": {
+                       "components": {
+                            "contactus-form": {
+                                "component": "Brander_ContactUs/js/contactus-form-component",
+                                "postName": "<?php echo $block->getUserData('name'); ?>",
+                                "postEmail": "<?php echo $block->getUserData('email'); ?>",
+                                "postPhone": "<?php echo $block->getUserData('telephone'); ?>",
+                                "postQuestion": "<?php echo $block->getUserData('question'); ?>",
+                                "ajaxUrl" : "<?php echo $block->getAddUrlAction(); ?>"
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
     </div>
-</form>
+<?php else: ?>
+    <form class="form contact"
+          action="<?php /* @escapeNotVerified */ echo $block->escapeUrl($block->getFormAction()); ?>"
+          id="contact-form"
+          method="post"
+          data-hasrequired="* Required Fields"
+          data-mage-init='{"validation":{}}'
+    >
+        <fieldset class="fieldset">
+            <legend class="legend"><span><?php echo $block->escapeHtml(__('Write Us')) ?></span></legend><br />
+            <div class="field note no-label"><?php echo $block->escapeHtml(__('And we’ll get back to you as quickly as possible.')) ?></div>
+            <div class="field name required">
+                <label class="label" for="name"><span><?php echo $block->escapeHtml(__('Your Name:')); ?></span></label>
+                <div class="control">
+                    <input name="name"
+                           id="name"
+                           title="<?php echo $block->escapeHtmlAttr(__('Name')); ?>"
+                           value="<?php echo $block->escapeHtmlAttr($this->helper('Brander\ContactUs\Helper\Data')->getPostValue('name')
+                               ?: $this->helper('Brander\ContactUs\Helper\Data')->getUserName()); ?>"
+                           class="input-text"
+                           type="text"
+                           data-validate="{required:true}"
+                    />
+                </div>
+            </div>
+            <div class="field email required">
+                <label for="email" class="label"><span><?php echo $block->escapeHtml(__('Your Email:')); ?></span></label>
+                <div class="control">
+                    <input type="email"
+                           name="email"
+                           id="email"
+                           value="<?php echo $block->escapeHtmlAttr($this->helper('Brander\ContactUs\Helper\Data')->getPostValue('email')
+                               ?: $this->helper('Brander\ContactUs\Helper\Data')->getUserEmail()); ?>"
+                           title="<?php echo $block->escapeHtmlAttr(__('Email')); ?>"
+                           class="input-text"
+                           data-validate="{required:true, 'validate-email':true}"
+                    />
+                </div>
+            </div>
+            <div class="field telephone required">
+                <label for="telephone" class="label"><span><?php echo $block->escapeHtml(__('Your Phone:')); ?></span></label>
+                <div class="control">
+                    <input type="text"
+                           name="telephone"
+                           id="telephone"
+                           value="<?php echo $block->escapeHtmlAttr($this->helper('Brander\ContactUs\Helper\Data')->getPostValue('telephone')); ?>"
+                           title="<?php echo $block->escapeHtmlAttr(__('Phone')); ?>"
+                           class="input-text"
+                           data-validate="{required:true}"
+                    />
+                </div>
+            </div>
+            <div class="field question required">
+                <label class="label" for="field3">
+                    <span><?php echo $block->escapeHtml(__('Your Question:')); ?></span>
+                </label>
+                <div class="control">
+                    <textarea rows="10"
+                              cols="45"
+                              name="question"
+                              id="field3"
+                              title="<?php echo $block->escapeHtmlAttr(__('Question')); ?>"
+                              value="<?php echo $block->escapeHtmlAttr($this->helper('Brander\ContactUs\Helper\Data')->getPostValue('question')); ?>"
+                              data-validate="{required:true}">
+                    </textarea>
+                </div>
+            </div>
+            <?php echo $block->getChildHtml('form.additional.info'); ?>
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <input type="hidden" name="hideit" id="hideit" value="" />
+                <button type="submit" title="<?php echo $block->escapeHtmlAttr(__('Submit')); ?>" class="action submit primary">
+                    <span><?php echo $block->escapeHtml(__('Submit')); ?></span>
+                </button>
+            </div>
+        </div>
+    </form>
+<?php endif; ?>

@@ -1,0 +1,74 @@
+<form class="form contact" id="contact-form" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
+    <fieldset class="fieldset">
+        <legend class="legend">
+            <span data-bind="i18n: 'Write Us'"></span>
+        </legend>
+        <br />
+        <div class="field note no-label" data-bind="i18n: 'And we’ll get back to you as quickly as possible.'"></div>
+        <div class="field name required">
+            <label class="label" for="customer-name">
+                <span data-bind="i18n: 'Your Name:'"></span>
+            </label>
+            <div class="control">
+                <input name="name"
+                       id="customer-name"
+                       data-bind="attr: {value: getPostName(), title: $t('Name')}"
+                       class="input-text"
+                       type="text"
+                       data-validate="{required:true}"
+                />
+            </div>
+        </div>
+        <div class="field email required">
+            <label for="customer-email" class="label">
+                <span data-bind="i18n: 'Your Email:'"></span>
+            </label>
+            <div class="control">
+                <input type="email"
+                       name="email"
+                       id="customer-email"
+                       data-bind="attr: {value: getPostEmail(), title: $t('Email')}"
+                       class="input-text"
+                       data-validate="{required:true, 'validate-email':true}"
+                />
+            </div>
+        </div>
+        <div class="field telephone required">
+            <label for="customer-telephone" class="label">
+                <span data-bind="i18n: 'Your Phone:'"></span>
+            </label>
+            <div class="control">
+                <input type="text"
+                       name="telephone"
+                       id="customer-telephone"
+                       data-bind="attr: {value: getPostPhone(), title: $t('Phone')}"
+                       class="input-text"
+                       data-validate="{required:true}"
+                />
+            </div>
+        </div>
+        <div class="field question required">
+            <label class="label" for="customer-question">
+                <span data-bind="i18n: 'Your Question:'"></span>
+            </label>
+            <div class="control">
+                <textarea rows="10"
+                          cols="45"
+                          name="question"
+                          id="customer-question"
+                          data-bind="attr: {value: getPostQuestion(), title: $t('Question')}"
+                          data-validate="{required:true}">
+                </textarea>
+            </div>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="" />
+            <button type="submit"
+                    data-bind="click:submitForm, i18n:'Submit', attr: {title: $t('Submit')}"
+            >
+            </button>
+        </div>
+    </div>
+</form>

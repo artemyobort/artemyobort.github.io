@@ -6,7 +6,7 @@
 <body>
     <referenceBlock name="navigation.sections" remove="true" />
     <referenceContainer name="content">
-        <block class="Brander\ContactUs\Block\ContactUs" name="contactForm" template="Brander_ContactUs::contactus_form.phtml">
+        <block class="Brander\ContactUs\Block\ContactUs" name="contactForm" template="Brander_ContactUs::contactus_form.phtml" cacheable="false">
             <container name="form.additional.info" label="Form Additional Info"/>
         </block>
     </referenceContainer>

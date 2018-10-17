@@ -5,6 +5,7 @@ namespace Brander\ContactUs\Controller\Index;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Brander\ContactUs\Api\Data\GridInterface;
+use Magento\Framework\Controller\ResultFactory;
 use Brander\ContactUs\Api\Data\ConfigInterface;
 use Magento\Framework\HTTP\PhpEnvironment\Request;
 use Magento\Framework\Exception\LocalizedException;
@@ -60,15 +61,15 @@ class Add extends Action
      * Method to get handle contact us form post request.
      *
      * @access  public
-     * @return  \Magento\Framework\Controller\Result\Redirect
+     * @return  \Magento\Framework\Controller\Result\Redirect | \Magento\Framework\Controller\Result\Json
      */
     public function execute()
     {
         if (!$this->getRequest()->isPost() || !$this->_contactUsConfig->isEnabled()) {
             return $this->resultRedirectFactory->create()->setPath('*/');
         }
-        $post = $this->getRequest()->getPostValue();
 
+        $post = $this->getRequest()->getPostValue();
         try {
             if($this->validatedParams($post)) {
                 $this->_gridContactUsModel->setData($post);
@@ -83,7 +84,14 @@ class Add extends Action
             $this->_dataPersistor->set('contact_us', $this->getRequest()->getParams());
         }
 
-        return $this->resultRedirectFactory->create()->setPath('*/');
+        if (isset($post['isAjax'])) {
+            $result = $this->resultFactory->create(ResultFactory::TYPE_JSON);
+            $result->setData('success', 1);
+        } else {
+            $result = $this->resultRedirectFactory->create()->setPath('*/');
+        }
+
+        return $result;
     }
 
     /**

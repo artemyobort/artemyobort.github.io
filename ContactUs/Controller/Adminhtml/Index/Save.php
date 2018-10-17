@@ -2,7 +2,6 @@
 
 namespace Brander\ContactUs\Controller\Adminhtml\Index;
 
-use Magento\Framework\Registry;
 use Magento\Backend\App\Action;
 use Brander\ContactUs\Model\Grid;
 use Magento\Backend\App\Action\Context;
@@ -33,19 +32,17 @@ class Save extends Action
      *
      * @access  public
      * @param   Context                 $context
-     * @param   Registry                $coreRegistry
      * @param   DataPersistorInterface  $dataPersistor
      * @param   Grid                    $grid
      */
     public function __construct(
         Context $context,
-        Registry $coreRegistry,
         DataPersistorInterface $dataPersistor,
         Grid $grid
     ) {
         $this->_grid = $grid;
         $this->dataPersistor = $dataPersistor;
-        parent::__construct($context, $coreRegistry);
+        parent::__construct($context);
     }
 
     /**
@@ -61,7 +58,6 @@ class Save extends Action
         $post = $this->getRequest()->getPostValue();
         if ($post) {
             $id = $this->getRequest()->getParam('id');
-
             /** @var Grid $model */
             $model = $this->_grid->load($id);
             if (!$model->getId() && $id) {
@@ -70,15 +66,14 @@ class Save extends Action
             }
 
             $model->setData($post);
-
             try {
                 $model->save();
                 $this->messageManager->addSuccess(__('You saved the block.'));
                 $this->dataPersistor->clear('contactus_form');
-
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('*/*/edit', ['id' => $model->getId()]);
                 }
+
                 return $resultRedirect->setPath('*/*/');
             } catch (LocalizedException $e) {
                 $this->messageManager->addError($e->getMessage());
@@ -87,8 +82,10 @@ class Save extends Action
             }
 
             $this->dataPersistor->set('contactus_form', $post);
+
             return $resultRedirect->setPath('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
         }
+
         return $resultRedirect->setPath('*/*/');
     }
 }

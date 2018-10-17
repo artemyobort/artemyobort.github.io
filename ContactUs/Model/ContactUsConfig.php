@@ -38,4 +38,15 @@ class ContactUsConfig implements ConfigInterface
             ScopeInterface::SCOPE_STORE
         );
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isKnockoutForm()
+    {
+        return $this->scopeConfig->isSetFlag(
+            self::XML_PATH_TYPE,
+            ScopeInterface::SCOPE_STORE
+        );
+    }
 }
