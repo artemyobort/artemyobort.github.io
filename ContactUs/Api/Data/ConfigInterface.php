@@ -10,15 +10,14 @@ namespace Brander\ContactUs\Api\Data;
  */
 interface ConfigInterface
 {
-    /**
-     * Enabled contacus form config path.
+    /**#@+
+     * Constants of contact us form's store config.
+     * @var string
      */
-    const XML_PATH_ENABLED = 'contactus_settings/general/enable';
+    const XML_PATH_TO_FORM_CONTACT_US_FORM_ENABLED = 'contactus_settings/general/enable';
 
-    /**
-     * Contactus's form type config path.
-     */
-    const XML_PATH_TYPE = 'contactus_settings/general/type';
+    const XML_PATH_TO_CONTACT_US_FORM_TYPE = 'contactus_settings/general/type';
+    /**#@-*/
 
     /**
      * Check if contacts module is enabled.

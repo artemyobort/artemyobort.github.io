@@ -4,7 +4,6 @@ namespace Brander\ContactUs\Helper;
 
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Helper\Context;
-use Brander\ContactUs\Api\Data\ConfigInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Customer\Helper\View as CustomerViewHelper;
@@ -16,11 +15,6 @@ use Magento\Framework\App\Request\DataPersistorInterface;
  */
 class Data extends AbstractHelper
 {
-    /**
-     * XML path to store config contact us is enabled.
-     */
-    const XML_PATH_ENABLED = ConfigInterface::XML_PATH_ENABLED;
-
     /**
      * @access  protected
      * @var     Session
@@ -43,7 +37,7 @@ class Data extends AbstractHelper
      * @access  private
      * @var     array
      */
-    private $postData = null;
+    protected $_postData;
 
     /**
      * Data constructor.
@@ -111,13 +105,13 @@ class Data extends AbstractHelper
      */
     public function getPostValue( $key )
     {
-        if (null === $this->postData) {
-            $this->postData = (array) $this->_dataPersistor->get('contact_us');
+        if (!$this->_postData) {
+            $this->_postData = (array) $this->_dataPersistor->get('contact_us');
             $this->_dataPersistor->clear('contact_us');
         }
 
-        if (isset($this->postData[$key])) {
-            return (string) $this->postData[$key];
+        if (isset($this->_postData[$key])) {
+            return (string) $this->_postData[$key];
         }
 
         return '';

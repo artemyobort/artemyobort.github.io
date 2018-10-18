@@ -34,7 +34,7 @@ class ContactUsConfig implements ConfigInterface
     public function isEnabled()
     {
         return $this->scopeConfig->isSetFlag(
-            self::XML_PATH_ENABLED,
+            self::XML_PATH_TO_FORM_CONTACT_US_FORM_ENABLED,
             ScopeInterface::SCOPE_STORE
         );
     }
@@ -45,7 +45,7 @@ class ContactUsConfig implements ConfigInterface
     public function isKnockoutForm()
     {
         return $this->scopeConfig->isSetFlag(
-            self::XML_PATH_TYPE,
+            self::XML_PATH_TO_CONTACT_US_FORM_TYPE,
             ScopeInterface::SCOPE_STORE
         );
     }

@@ -12,7 +12,7 @@
             <div class="control">
                 <input name="name"
                        id="customer-name"
-                       data-bind="attr: {value: getPostName(), title: $t('Name')}"
+                       data-bind="attr: {value: getFormValue('name'), title: $t('Name')}"
                        class="input-text"
                        type="text"
                        data-validate="{required:true}"
@@ -27,7 +27,7 @@
                 <input type="email"
                        name="email"
                        id="customer-email"
-                       data-bind="attr: {value: getPostEmail(), title: $t('Email')}"
+                       data-bind="attr: {value: getFormValue('email'), title: $t('Email')}"
                        class="input-text"
                        data-validate="{required:true, 'validate-email':true}"
                 />
@@ -41,7 +41,7 @@
                 <input type="text"
                        name="telephone"
                        id="customer-telephone"
-                       data-bind="attr: {value: getPostPhone(), title: $t('Phone')}"
+                       data-bind="attr: {value: getFormValue('telephone'), title: $t('Phone')}"
                        class="input-text"
                        data-validate="{required:true}"
                 />
@@ -56,7 +56,7 @@
                           cols="45"
                           name="question"
                           id="customer-question"
-                          data-bind="attr: {value: getPostQuestion(), title: $t('Question')}"
+                          data-bind="attr: {value: getFormValue('question'), title: $t('Question')}"
                           data-validate="{required:true}">
                 </textarea>
             </div>
