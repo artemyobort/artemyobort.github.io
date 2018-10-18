@@ -12,6 +12,7 @@ use Magento\Framework\Exception\NotFoundException;
 
 /**
  * Class Index
+ *
  * @package Brander\ContactUs\Controller\Index
  */
 class Index extends Action
@@ -29,19 +30,14 @@ class Index extends Action
      * @param   Context             $context
      * @param   ConfigInterface     $contactsConfig
      */
-    public function __construct(
-        Context $context,
-        ConfigInterface $contactsConfig
-    ) {
+    public function __construct( Context $context, ConfigInterface $contactsConfig )
+    {
         parent::__construct($context);
         $this->_contactUsConfig = $contactsConfig;
     }
 
     /**
-     * Show Contact Us page
-     *
-     * @access  public
-     * @return  \Magento\Framework\Controller\ResultInterface
+     * {@inheritdoc}
      */
     public function execute()
     {
@@ -49,12 +45,7 @@ class Index extends Action
     }
 
     /**
-     * Dispatch request
-     *
-     * @access  public
-     * @param   RequestInterface    $request
-     * @return  ResponseInterface
-     * @throws  NotFoundException
+     * {@inheritdoc}
      */
     public function dispatch( RequestInterface $request )
     {

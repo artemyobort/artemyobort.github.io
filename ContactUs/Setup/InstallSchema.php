@@ -15,12 +15,7 @@ use \Magento\Framework\Setup\ModuleContextInterface;
 class InstallSchema implements InstallSchemaInterface
 {
     /**
-     * Install contact us table.
-     *
-     * @access  public
-     * @param   SchemaSetupInterface    $setup
-     * @param   ModuleContextInterface  $context
-     * @return  void
+     * {@inheritdoc}
      */
     public function install( SchemaSetupInterface $setup, ModuleContextInterface $context )
     {

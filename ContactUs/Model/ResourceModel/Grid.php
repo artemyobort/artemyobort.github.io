@@ -14,8 +14,7 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 class Grid extends AbstractDb
 {
     /**
-     * @access  protected
-     * @var     string
+     * {@inheritdoc}
      */
     protected $_idFieldName = 'id';
 
@@ -40,10 +39,7 @@ class Grid extends AbstractDb
     }
 
     /**
-     * Post construct method.
-     *
-     * @access protected
-     * @return void
+     * {@inheritdoc}
      */
     protected function _construct()
     {

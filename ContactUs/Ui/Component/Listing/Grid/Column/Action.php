@@ -7,27 +7,38 @@ use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 
-
+/**
+ * Class Action
+ *
+ * @package Brander\ContactUs\Ui\Component\Listing\Grid\Column
+ */
 class Action extends Column
 {
     /** Url path */
     const ROW_EDIT_URL = 'contactus/index/edit';
 
-    /** @var UrlInterface */
+    /**
+     * @access  protected
+     * @var     UrlInterface
+     */
     protected $_urlBuilder;
 
     /**
-     * @var string
+     * @access  private
+     * @var     string
      */
     private $_editUrl;
 
     /**
-     * @param ContextInterface   $context
-     * @param UiComponentFactory $uiComponentFactory
-     * @param UrlInterface       $urlBuilder
-     * @param array              $components
-     * @param array              $data
-     * @param string             $editUrl
+     * Action constructor.
+     *
+     * @access  public
+     * @param   ContextInterface    $context
+     * @param   UiComponentFactory  $uiComponentFactory
+     * @param   UrlInterface        $urlBuilder
+     * @param   array               $components
+     * @param   array               $data
+     * @param   string              $editUrl
      */
     public function __construct(
         ContextInterface $context,
@@ -43,11 +54,7 @@ class Action extends Column
     }
 
     /**
-     * Prepare Data Source.
-     *
-     * @param array $dataSource
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function prepareDataSource( array $dataSource )
     {

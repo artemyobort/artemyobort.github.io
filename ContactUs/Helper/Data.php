@@ -11,6 +11,7 @@ use Magento\Framework\App\Request\DataPersistorInterface;
 
 /**
  * Class Data
+ *
  * @package Brander\ContactUs\Helper
  */
 class Data extends AbstractHelper

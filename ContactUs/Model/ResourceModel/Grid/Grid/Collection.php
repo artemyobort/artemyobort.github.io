@@ -11,6 +11,7 @@ use Brander\ContactUs\Model\ResourceModel\Grid\Collection as GridCollection;
 
 /**
  * Class Collection
+ *
  * @package Brander\ContactUs\Model\ResourceModel\Grid\Grid
  */
 class Collection extends GridCollection implements SearchResultInterface
@@ -22,10 +23,7 @@ class Collection extends GridCollection implements SearchResultInterface
     protected $aggregations;
 
     /**
-     * Collection construct method.
-     *
-     * @access  protected
-     * @return  void
+     * {@inheritdoc}
      */
     protected function _construct()
     {
@@ -33,10 +31,7 @@ class Collection extends GridCollection implements SearchResultInterface
     }
 
     /**
-     * Method to get return aggregations.
-     *
-     * @access public
-     * @return AggregationInterface
+     * {@inheritdoc}
      */
     public function getAggregations()
     {
@@ -44,11 +39,7 @@ class Collection extends GridCollection implements SearchResultInterface
     }
 
     /**
-     * Method to get set aggregations.
-     *
-     * @access  public
-     * @param   AggregationInterface $aggregations
-     * @return  void
+     * {@inheritdoc}
      */
     public function setAggregations( $aggregations )
     {
@@ -56,12 +47,7 @@ class Collection extends GridCollection implements SearchResultInterface
     }
 
     /**
-     * Retrieve all ids for collection
-     *
-     * @access  public
-     * @param   int|string $limit
-     * @param   int|string $offset
-     * @return  array
+     * {@inheritdoc}
      */
     public function getAllIds( $limit = null, $offset = null )
     {
@@ -69,10 +55,7 @@ class Collection extends GridCollection implements SearchResultInterface
     }
 
     /**
-     * Get search criteria.
-     *
-     * @access  public
-     * @return  \Magento\Framework\Api\SearchCriteriaInterface|null
+     * {@inheritdoc}
      */
     public function getSearchCriteria()
     {
@@ -80,11 +63,7 @@ class Collection extends GridCollection implements SearchResultInterface
     }
 
     /**
-     * Set search criteria.
-     *
-     * @access  public
-     * @param   \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
-     * @return  $this
+     * {@inheritdoc}
      */
     public function setSearchCriteria( SearchCriteriaInterface $searchCriteria = null )
     {
@@ -92,10 +71,7 @@ class Collection extends GridCollection implements SearchResultInterface
     }
 
     /**
-     * Get total count.
-     *
-     * @accss   public
-     * @return  int
+     * {@inheritdoc}
      */
     public function getTotalCount()
     {
@@ -103,11 +79,7 @@ class Collection extends GridCollection implements SearchResultInterface
     }
 
     /**
-     * Set total count.
-     *
-     * @access  public
-     * @param   int $totalCount
-     * @return  $this
+     * {@inheritdoc}
      */
     public function setTotalCount( $totalCount )
     {
@@ -115,11 +87,7 @@ class Collection extends GridCollection implements SearchResultInterface
     }
 
     /**
-     * Set items list.
-     *
-     * @access  public
-     * @param   \Magento\Framework\Api\ExtensibleDataInterface[] $items
-     * @return  $this
+     * {@inheritdoc}
      */
     public function setItems( array $items = null )
     {

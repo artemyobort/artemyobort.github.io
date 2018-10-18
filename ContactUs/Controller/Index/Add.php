@@ -7,12 +7,12 @@ use Magento\Framework\App\Action\Context;
 use Brander\ContactUs\Api\Data\GridInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Brander\ContactUs\Api\Data\ConfigInterface;
-use Magento\Framework\HTTP\PhpEnvironment\Request;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\App\Request\DataPersistorInterface;
 
 /**
  * Class Add
+ *
  * @package Brander\ContactUs\Controller\Index
  */
 class Add extends Action
@@ -58,15 +58,13 @@ class Add extends Action
     }
 
     /**
-     * Method to get handle contact us form post request.
-     *
-     * @access  public
-     * @return  \Magento\Framework\Controller\Result\Redirect | \Magento\Framework\Controller\Result\Json
+     * {@inheritdoc}
      */
     public function execute()
     {
         if (!$this->getRequest()->isPost() || !$this->_contactUsConfig->isEnabled()) {
-            return $this->resultRedirectFactory->create()->setPath('*/');
+
+            return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('*/');
         }
 
         $post = $this->getRequest()->getPostValue();
@@ -92,7 +90,7 @@ class Add extends Action
             $result = $this->resultFactory->create(ResultFactory::TYPE_JSON);
             $result->setData('success', 1);
         } else {
-            $result = $this->resultRedirectFactory->create()->setPath('*/');
+            $result = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('*/');
         }
 
         return $result;

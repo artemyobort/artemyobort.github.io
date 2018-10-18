@@ -19,24 +19,17 @@ class Grid extends AbstractModel implements GridInterface
     const CACHE_TAG = 'contact_us_grid';
 
     /**
-     * @access  protected
-     * @var     string
+     * {@inheritdoc}
      */
     protected $_cacheTag = 'contact_us_grid';
 
     /**
-     * Prefix of model events names.
-     *
-     * @access  protected
-     * @var     string
+     * {@inheritdoc}
      */
     protected $_eventPrefix = 'contact_us_grid';
 
     /**
-     * Grid construct method.
-     *
-     * @access protected
-     * @return void
+     * {@inheritdoc}
      */
     protected function _construct()
     {

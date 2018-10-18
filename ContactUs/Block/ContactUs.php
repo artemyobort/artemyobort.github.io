@@ -3,13 +3,14 @@
 namespace Brander\ContactUs\Block;
 
 use Brander\ContactUs\Helper\Data;
-use Magento\Framework\Json\Encoder;
+
 use Magento\Framework\View\Element\Template;
 use Brander\ContactUs\Api\Data\ConfigInterface;
 use Magento\Framework\View\Element\Template\Context;
 
 /**
  * Class ContactUs
+ *
  * @package Brander\ContactUs\Block
  */
 class ContactUs extends Template
@@ -26,11 +27,6 @@ class ContactUs extends Template
     protected $_layoutProcessors;
 
     /**
-     * @var Encoder
-     */
-    protected $_jsonEncoder;
-
-    /**
      * @var Data
      */
     private $helper;
@@ -42,7 +38,6 @@ class ContactUs extends Template
      * @param   Context             $context
      * @param   ConfigInterface     $contactsConfig
      * @param   Data                $helper
-     * @param   Encoder             $jsonEncoder
      * @param   array               $layoutProcessors
      * @param   array               $data
      */
@@ -50,12 +45,10 @@ class ContactUs extends Template
         Context $context,
         ConfigInterface $contactsConfig,
         Data $helper,
-        Encoder $jsonEncoder,
         array $layoutProcessors = [],
         array $data = []
     ) {
         parent::__construct($context, $data);
-        $this->_jsonEncoder = $jsonEncoder;
         $this->_contactUsConfig = $contactsConfig;
         $this->_layoutProcessors = $layoutProcessors;
         $this->helper = $helper;
@@ -73,10 +66,7 @@ class ContactUs extends Template
     }
 
     /**
-     * Retrieve serialized JS layout configuration ready to use in template
-     *
-     * @access public
-     * @return string
+     * {@inheritdoc}
      */
     public function getJsLayout()
     {
@@ -125,6 +115,6 @@ class ContactUs extends Template
             'ajaxUrl'   => $this->getAddUrlAction()
         ];
 
-        return $this->_jsonEncoder->encode($formData);
+        return \Zend_Json::encode($formData);
     }
 }

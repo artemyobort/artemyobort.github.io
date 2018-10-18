@@ -5,10 +5,15 @@ namespace Brander\ContactUs\Controller\Adminhtml\Index;
 use Magento\Backend\App\Action;
 use Magento\Framework\Controller\ResultFactory;
 
+/**
+ * Class Edit
+ *
+ * @package Brander\ContactUs\Controller\Adminhtml\Index
+ */
 class Edit extends Action
 {
     /**
-     * @return \Magento\Framework\Controller\ResultInterface
+     * {@inheritdoc}
      */
     public function execute()
     {

@@ -15,12 +15,7 @@ class UpgradeData implements UpgradeDataInterface
 {
 
     /**
-     * Creates sample data for contact us table.
-     *
-     * @access  public
-     * @param   ModuleDataSetupInterface    $setup
-     * @param   ModuleContextInterface      $context
-     * @return  void
+     * {@inheritdoc}
      */
     public function upgrade( ModuleDataSetupInterface $setup, ModuleContextInterface $context )
     {
@@ -29,7 +24,6 @@ class UpgradeData implements UpgradeDataInterface
             && version_compare($context->getVersion(), '0.1.1') < 0
         ) {
             $tableName = $setup->getTable('brander_contact_us');
-
             $data = [
                 [
                     'name'      => 'Test 1',

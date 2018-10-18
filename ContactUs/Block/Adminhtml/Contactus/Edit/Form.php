@@ -10,6 +10,7 @@ use Magento\Backend\Block\Widget\Form\Generic;
 
 /**
  * Class Form
+ *
  * @package Brander\ContactUs\Block\Adminhtml\Grid\Edit
  */
 class Form extends Generic
@@ -42,10 +43,7 @@ class Form extends Generic
     }
 
     /**
-     * Prepare form.
-     *
-     * @access  protected
-     * @return  $this
+     * {@inheritdoc}
      */
     protected function _prepareForm()
     {

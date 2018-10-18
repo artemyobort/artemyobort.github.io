@@ -14,17 +14,12 @@ use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 class Collection extends AbstractCollection
 {
     /**
-     * @access  protected
-     * @var     string
+     * {@inheritdoc}
      */
     protected $_idFieldName = 'id';
 
     /**
-     * Collection construct method.
-     * Define resource model.
-     *
-     * @access protected
-     * @return void
+     * {@inheritdoc}
      */
     protected function _construct()
     {

@@ -5,6 +5,7 @@ namespace Brander\ContactUs\Controller\Adminhtml\Index;
 use Magento\Backend\App\Action;
 use Brander\ContactUs\Model\Grid;
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\App\Request\DataPersistorInterface;
 
@@ -46,15 +47,12 @@ class Save extends Action
     }
 
     /**
-     * Save action
-     *
-     * @access  public
-     * @return  \Magento\Framework\Controller\ResultInterface
+     * {@inheritdoc}
      */
     public function execute()
     {
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
-        $resultRedirect = $this->resultRedirectFactory->create();
+        $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
         $post = $this->getRequest()->getPostValue();
         if ($post) {
             $id = $this->getRequest()->getParam('id');

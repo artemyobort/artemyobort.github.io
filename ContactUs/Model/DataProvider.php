@@ -26,8 +26,7 @@ class DataProvider extends AbstractDataProvider
     private $_model;
 
     /**
-     * @access  public
-     * @var     CollectionFactory
+     * {@inheritdoc}
      */
     public $collection;
 
@@ -61,10 +60,7 @@ class DataProvider extends AbstractDataProvider
     }
 
     /**
-     * Get data
-     *
-     * @access public
-     * @return array
+     * {@inheritdoc}
      */
     public function getData()
     {
