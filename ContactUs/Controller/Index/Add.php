@@ -7,6 +7,7 @@ use Magento\Framework\App\Action\Context;
 use Brander\ContactUs\Api\Data\GridInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Brander\ContactUs\Api\Data\ConfigInterface;
+use Magento\Framework\Data\Form\FormKey\Validator;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\App\Request\DataPersistorInterface;
 
@@ -17,12 +18,6 @@ use Magento\Framework\App\Request\DataPersistorInterface;
  */
 class Add extends Action
 {
-    /**
-     * @access  private
-     * @var     ConfigInterface
-     */
-    private $_contactUsConfig;
-
     /**
      * @access  protected
      * @var     GridInterface
@@ -36,21 +31,35 @@ class Add extends Action
     protected $_dataPersistor;
 
     /**
+     * @var Validator
+     */
+    protected $_formKeyValidator;
+
+    /**
+     * @access  private
+     * @var     ConfigInterface
+     */
+    private $_contactUsConfig;
+
+    /**
      * Add constructor.
      *
      * @access  public
      * @param   Context                 $context
      * @param   GridInterface           $model
      * @param   ConfigInterface         $contactsConfig
+     * @param   Validator               $validator
      * @param   DataPersistorInterface  $dataPersistor
      */
     public function __construct(
         Context $context,
         GridInterface $model,
         ConfigInterface $contactsConfig,
+        Validator $validator,
         DataPersistorInterface $dataPersistor
     ) {
         parent::__construct($context);
+        $this->_formKeyValidator = $validator;
         $this->_gridContactUsModel = $model;
         $this->_dataPersistor = $dataPersistor;
         $this->_contactUsConfig = $contactsConfig;
@@ -62,14 +71,27 @@ class Add extends Action
      */
     public function execute()
     {
-        if (!$this->getRequest()->isPost() || !$this->_contactUsConfig->isEnabled()) {
+        $redirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('*/');
+        if (!$this->_contactUsConfig->isEnabled()) {
 
-            return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('*/');
+            return $redirect;
+        }
+
+        if (!$this->getRequest()->isPost()) {
+
+            return $redirect;
         }
 
         $post = $this->getRequest()->getPostValue();
         if (!$post) {
             parse_str($this->getRequest()->getContent(), $post);
+            if (isset($post['form_key'])) {
+                $this->getRequest()->setParams(['form_key' => $post['form_key']]);
+            }
+        }
+
+        if (!$this->_formKeyValidator->validate($this->getRequest())) {
+            return $redirect;
         }
 
         try {
@@ -90,7 +112,7 @@ class Add extends Action
             $result = $this->resultFactory->create(ResultFactory::TYPE_JSON);
             $result->setData('success', 1);
         } else {
-            $result = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('*/');
+            $result = $redirect;
         }
 
         return $result;

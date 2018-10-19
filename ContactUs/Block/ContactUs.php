@@ -3,9 +3,10 @@
 namespace Brander\ContactUs\Block;
 
 use Brander\ContactUs\Helper\Data;
-
+use Magento\Framework\Data\Form\FormKey;
 use Magento\Framework\View\Element\Template;
 use Brander\ContactUs\Api\Data\ConfigInterface;
+use Brander\ContactUs\Model\DefaultConfigProvider;
 use Magento\Framework\View\Element\Template\Context;
 
 /**
@@ -27,6 +28,11 @@ class ContactUs extends Template
     protected $_layoutProcessors;
 
     /**
+     * @var FormKey
+     */
+    protected $_formKey;
+
+    /**
      * @var Data
      */
     private $helper;
@@ -37,6 +43,7 @@ class ContactUs extends Template
      * @access  public
      * @param   Context             $context
      * @param   ConfigInterface     $contactsConfig
+     * @param   FormKey             $formKey
      * @param   Data                $helper
      * @param   array               $layoutProcessors
      * @param   array               $data
@@ -44,11 +51,13 @@ class ContactUs extends Template
     public function __construct(
         Context $context,
         ConfigInterface $contactsConfig,
+        FormKey $formKey,
         Data $helper,
         array $layoutProcessors = [],
         array $data = []
     ) {
         parent::__construct($context, $data);
+        $this->_formKey = $formKey;
         $this->_contactUsConfig = $contactsConfig;
         $this->_layoutProcessors = $layoutProcessors;
         $this->helper = $helper;
@@ -62,7 +71,7 @@ class ContactUs extends Template
      */
     public function getFormAction()
     {
-        return $this->getUrl($this->getAddUrlAction());
+        return $this->getUrl(DefaultConfigProvider::CONTACT_US_SEND_FORM_URL);
     }
 
     /**
@@ -78,17 +87,6 @@ class ContactUs extends Template
     }
 
     /**
-     * Method to get return url for ajax request.
-     *
-     * @access  public
-     * @return  string
-     */
-    public function getAddUrlAction()
-    {
-        return 'contactus/index/add';
-    }
-
-    /**
      * Method to get return contactus's form type store config flag.
      *
      * @access  public
@@ -100,21 +98,33 @@ class ContactUs extends Template
     }
 
     /**
-     * Method to get return formData
+     * Method to get return form key.
      *
-     * @access public
-     * @return string
+     * @access  public
+     * @return  string
      */
-    public function getFormData()
+    public function getFormKey()
     {
-        $formData = [
-            'name'      => $this->escapeHtmlAttr($this->helper->getPostValue('name') ?: $this->helper->getUserName()),
-            'email'     => $this->escapeHtmlAttr($this->helper->getPostValue('email') ?: $this->helper->getUserEmail()),
-            'telephone' => $this->escapeHtmlAttr($this->helper->getPostValue('telephone')),
-            'question'  => $this->escapeHtmlAttr($this->helper->getPostValue('question')),
-            'ajaxUrl'   => $this->getAddUrlAction()
-        ];
+        return $this->_formKey->getFormKey();
+    }
 
-        return \Zend_Json::encode($formData);
+    /**
+     * Retrieve checkout configuration
+     *
+     * @return array
+     * @codeCoverageIgnore
+     */
+    public function getContactUsFormConfig()
+    {
+        return $this->_contactUsConfig->getConfig();
+    }
+
+    /**
+     * @return bool|string
+     * @since 100.2.0
+     */
+    public function getSerializedFormConfig()
+    {
+        return json_encode($this->getContactUsFormConfig(), JSON_HEX_TAG);
     }
 }

@@ -16,7 +16,7 @@
         </script>
 
         <script type="text/javascript">
-          window.formData = <?php echo /* @escapeNotVerified */ $block->getFormData() ?>;
+          window.formData = <?php echo /* @escapeNotVerified */ $block->getSerializedFormConfig() ?>;
         </script>
 
     </div>
@@ -28,6 +28,7 @@
           data-hasrequired="* Required Fields"
           data-mage-init='{"validation":{}}'
     >
+        <input value="<?php $block->getFormKey(); ?>" type="hidden" name="form_key"/>
         <fieldset class="fieldset">
             <legend class="legend"><span><?php echo $block->escapeHtml(__('Write Us')) ?></span></legend><br />
             <div class="field note no-label"><?php echo $block->escapeHtml(__('And we’ll get back to you as quickly as possible.')) ?></div>

@@ -29,13 +29,29 @@ define(
           return;
         }
 
-        const url = this.getFormValue('ajaxUrl');
+        const url = this.getSendFormUrl();
         const input = $('<input>').attr('type', 'hidden').attr('name', 'isAjax').val(1);
         form.append(input);
 
         if (url) {
           sendForm(url, form.serialize());
         }
+      },
+      /**
+       * Method to get return contact us from's fromKey.
+       *
+       * @return  {string}
+       */
+      getFormKey: function () {
+        return this.formData.formKey;
+      },
+      /**
+       * Method to get return contact us from's fromKey.
+       *
+       * @return  {string}
+       */
+      getSendFormUrl: function () {
+        return this.formData.ajaxUrl;
       },
       /**
        * Method to get return form input value by form input name
@@ -45,7 +61,7 @@ define(
        * @return  {string}
        */
       getFormValue: function ( key ) {
-        return this.formData[key] ? this.formData[key] : '';
+        return this.formData.customerData[key] ? this.formData.customerData[key] : '';
       },
     });
   }

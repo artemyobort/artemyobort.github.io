@@ -2,8 +2,8 @@
  * @api
  */
 define(
-  ['mage/storage', 'mage/url'],
-  function ( storage, urlBuilder ) {
+  ['mage/storage'],
+  function ( storage ) {
     'use strict';
 
     /**
@@ -16,7 +16,7 @@ define(
     return function ( url, formData ) {
 
       storage.post(
-        urlBuilder.build(url), formData, false
+        url, formData, false
       ).done(function (response) {
         if (response === 'success') {
           location.reload();

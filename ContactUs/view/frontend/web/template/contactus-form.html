@@ -1,4 +1,5 @@
 <form class="form contact" id="contact-form" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
+    <input data-bind='attr: {value: getFormKey()}' type="hidden" name="form_key"/>
     <fieldset class="fieldset">
         <legend class="legend">
             <span data-bind="i18n: 'Write Us'"></span>
