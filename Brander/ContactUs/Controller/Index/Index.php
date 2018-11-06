@@ -5,7 +5,6 @@ namespace Brander\ContactUs\Controller\Index;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\RequestInterface;
-use Magento\Framework\App\ResponseInterface;
 use Brander\ContactUs\Api\Data\ConfigInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\NotFoundException;

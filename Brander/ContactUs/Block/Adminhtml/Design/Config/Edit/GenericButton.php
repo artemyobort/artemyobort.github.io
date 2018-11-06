@@ -32,7 +32,8 @@ class GenericButton
      * @param   Context                     $context
      * @param   BlockRepositoryInterface    $blockRepository
      */
-    public function __construct( Context $context, BlockRepositoryInterface $blockRepository ) {
+    public function __construct( Context $context, BlockRepositoryInterface $blockRepository )
+    {
         $this->context = $context;
         $this->blockRepository = $blockRepository;
     }
