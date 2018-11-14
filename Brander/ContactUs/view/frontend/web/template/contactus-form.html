@@ -1,5 +1,6 @@
+<div data-bind="text: message"></div>
 <form class="form contact" id="contact-form" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
-    <input data-bind='attr: {value: getFormKey()}' type="hidden" name="form_key"/>
+    <input data-bind="value: getFormKey(), attr: {type: 'hidden', name: 'form_key'}"  />
     <fieldset class="fieldset">
         <legend class="legend">
             <span data-bind="i18n: 'Write Us'"></span>
@@ -11,11 +12,8 @@
                 <span data-bind="i18n: 'Your Name:'"></span>
             </label>
             <div class="control">
-                <input name="name"
-                       id="customer-name"
-                       data-bind="attr: {value: getFormValue('name'), title: $t('Name')}"
-                       class="input-text"
-                       type="text"
+                <input id="customer-name"
+                       data-bind="value: name, attr: {type: 'text', class: 'input-text', name: 'name', title: $t('Name')}"
                        data-validate="{required:true}"
                 />
             </div>
@@ -25,11 +23,8 @@
                 <span data-bind="i18n: 'Your Email:'"></span>
             </label>
             <div class="control">
-                <input type="email"
-                       name="email"
-                       id="customer-email"
-                       data-bind="attr: {value: getFormValue('email'), title: $t('Email')}"
-                       class="input-text"
+                <input id="customer-email"
+                       data-bind="value: email, attr: {class: 'input-text', type: 'email', name: 'email', title: $t('Email')}"
                        data-validate="{required:true, 'validate-email':true}"
                 />
             </div>
@@ -39,11 +34,8 @@
                 <span data-bind="i18n: 'Your Phone:'"></span>
             </label>
             <div class="control">
-                <input type="text"
-                       name="telephone"
-                       id="customer-telephone"
-                       data-bind="attr: {value: getFormValue('telephone'), title: $t('Phone')}"
-                       class="input-text"
+                <input id="customer-telephone"
+                       data-bind="value: telephone, attr: {class: 'input-text', type: 'text', name: 'telephone', title: $t('Phone')}"
                        data-validate="{required:true}"
                 />
             </div>
@@ -53,11 +45,8 @@
                 <span data-bind="i18n: 'Your Question:'"></span>
             </label>
             <div class="control">
-                <textarea rows="10"
-                          cols="45"
-                          name="question"
-                          id="customer-question"
-                          data-bind="attr: {value: getFormValue('question'), title: $t('Question')}"
+                <textarea id="customer-question"
+                          data-bind="value: question, attr: {rows: '10', cols: '45', name: 'question', title: $t('Question')}"
                           data-validate="{required:true}">
                 </textarea>
             </div>

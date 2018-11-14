@@ -6,7 +6,7 @@ use Magento\Framework\Escaper;
 use Brander\ContactUs\Helper\Data;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\Data\Form\FormKey;
-use Brander\ContactUs\Api\Data\ConfigProviderInterface;
+use Brander\ContactUs\Api\ConfigProviderInterface;
 
 /**
  * DefaultConfigProvider contact us form configuration provider.
@@ -70,7 +70,6 @@ class DefaultConfigProvider implements ConfigProviderInterface
     {
         $output['formKey'] = $this->_formKey->getFormKey();
         $output['customerData'] = $this->getCustomerData();
-        $output['ajaxUrl'] = $this->getSendFormUrl();
 
         return $output;
     }
@@ -88,16 +87,5 @@ class DefaultConfigProvider implements ConfigProviderInterface
             'telephone' => $this->_escaper->escapeHtmlAttr($this->_helperData->getPostValue('telephone')),
             'question'  => $this->_escaper->escapeHtmlAttr($this->_helperData->getPostValue('question')),
         ];
-    }
-
-    /**
-     * Retrieve checkout URL
-     *
-     * @return string
-     * @codeCoverageIgnore
-     */
-    public function getSendFormUrl()
-    {
-        return $this->_urlBuilder->getUrl(self::CONTACT_US_SEND_FORM_URL);
     }
 }

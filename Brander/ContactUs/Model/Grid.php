@@ -3,7 +3,7 @@
 namespace Brander\ContactUs\Model;
 
 use Magento\Framework\Model\AbstractModel;
-use Brander\ContactUs\Api\Data\GridInterface;
+use Brander\ContactUs\Api\GridInterface;
 use Brander\ContactUs\Model\ResourceModel\Grid as GridResource;
 
 /**
@@ -17,6 +17,11 @@ class Grid extends AbstractModel implements GridInterface
      * CMS page cache tag.
      */
     const CACHE_TAG = 'contact_us_grid';
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $_idFieldName = self::ID;
 
     /**
      * {@inheritdoc}

@@ -1,6 +1,9 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Brander\ContactUs\Api\Data\GridInterface" type="Brander\ContactUs\Model\Grid" />
-    <preference for="Brander\ContactUs\Api\Data\ConfigInterface" type="Brander\ContactUs\Model\ContactUsConfig" />
+    <preference for="Brander\ContactUs\Api\GridInterface" type="Brander\ContactUs\Model\Grid" />
+    <preference for="Brander\ContactUs\Api\ConfigInterface" type="Brander\ContactUs\Model\ContactUsConfig" />
+    <preference for="Brander\ContactUs\Api\GridRepositoryInterface" type="Brander\ContactUs\Model\GridRepository" />
+    <preference for="Brander\ContactUs\Api\CallBackFormManagementInterface" type="Brander\ContactUs\Model\CallBackFormManagement" />
+    <preference for="Brander\ContactUs\ApiGridSearchResultInterface" type="Magento\Framework\Api\SearchResults" />
     <virtualType name="Brander\ContactUs\Model\ResourceModel\Grid\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">brander_contact_us</argument>

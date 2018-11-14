@@ -4,9 +4,9 @@ namespace Brander\ContactUs\Controller\Index;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
-use Brander\ContactUs\Api\Data\GridInterface;
+use Brander\ContactUs\Api\GridInterface;
 use Magento\Framework\Controller\ResultFactory;
-use Brander\ContactUs\Api\Data\ConfigInterface;
+use Brander\ContactUs\Api\ConfigInterface;
 use Magento\Framework\Data\Form\FormKey\Validator;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\App\Request\DataPersistorInterface;

@@ -1,11 +1,12 @@
 <?php
 
-namespace Brander\ContactUs\Api\Data;
+namespace Brander\ContactUs\Api;
 
 /**
  * Interface ConfigProviderInterface
  *
- * @package Brander\ContactUs\Model
+ * @category    Brander
+ * @package     Brander\ContactUs
  * @api
  */
 interface ConfigProviderInterface

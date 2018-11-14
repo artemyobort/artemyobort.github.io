@@ -5,7 +5,7 @@ namespace Brander\ContactUs\Block;
 use Brander\ContactUs\Helper\Data;
 use Magento\Framework\Data\Form\FormKey;
 use Magento\Framework\View\Element\Template;
-use Brander\ContactUs\Api\Data\ConfigInterface;
+use Brander\ContactUs\Api\ConfigInterface;
 use Brander\ContactUs\Model\DefaultConfigProvider;
 use Magento\Framework\View\Element\Template\Context;
 
@@ -111,8 +111,8 @@ class ContactUs extends Template
     /**
      * Retrieve checkout configuration
      *
-     * @return array
-     * @codeCoverageIgnore
+     * @access  public
+     * @return  array
      */
     public function getContactUsFormConfig()
     {
@@ -120,8 +120,8 @@ class ContactUs extends Template
     }
 
     /**
-     * @return bool|string
-     * @since 100.2.0
+     * @access  public
+     * @return  string
      */
     public function getSerializedFormConfig()
     {

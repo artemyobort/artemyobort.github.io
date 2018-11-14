@@ -1,11 +1,12 @@
 <?php
 
-namespace Brander\ContactUs\Api\Data;
+namespace Brander\ContactUs\Api;
 
 /**
  * GridInterface
  *
- * @package Brander\ContactUs\Api\Data
+ * @category    Brander
+ * @package     Brander\ContactUs
  * @api
  */
 interface GridInterface

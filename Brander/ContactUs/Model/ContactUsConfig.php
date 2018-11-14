@@ -3,9 +3,9 @@
 namespace Brander\ContactUs\Model;
 
 use Magento\Store\Model\ScopeInterface;
-use Brander\ContactUs\Api\Data\ConfigInterface;
+use Brander\ContactUs\Api\ConfigInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Brander\ContactUs\Api\Data\ConfigProviderInterface;
+use Brander\ContactUs\Api\ConfigProviderInterface;
 
 /**
  * Contact module configuration

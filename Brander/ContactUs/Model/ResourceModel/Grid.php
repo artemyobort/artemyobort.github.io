@@ -2,6 +2,7 @@
 
 namespace Brander\ContactUs\Model\ResourceModel;
 
+use Brander\ContactUs\Api\GridInterface;
 use Magento\Framework\Stdlib\DateTime\DateTime;
 use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
@@ -13,6 +14,11 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
  */
 class Grid extends AbstractDb
 {
+    /**
+     * @var string
+     */
+    const TABLE_NAME = 'brander_contact_us';
+
     /**
      * {@inheritdoc}
      */
@@ -43,6 +49,6 @@ class Grid extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('brander_contact_us', 'id');
+        $this->_init(self::TABLE_NAME, GridInterface::ID);
     }
 }
