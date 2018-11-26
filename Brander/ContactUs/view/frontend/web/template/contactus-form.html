@@ -7,50 +7,11 @@
         </legend>
         <br />
         <div class="field note no-label" data-bind="i18n: 'And we’ll get back to you as quickly as possible.'"></div>
-        <div class="field name required">
-            <label class="label" for="customer-name">
-                <span data-bind="i18n: 'Your Name:'"></span>
-            </label>
-            <div class="control">
-                <input id="customer-name"
-                       data-bind="value: name, attr: {type: 'text', class: 'input-text', name: 'name', title: $t('Name')}"
-                       data-validate="{required:true}"
-                />
-            </div>
-        </div>
-        <div class="field email required">
-            <label for="customer-email" class="label">
-                <span data-bind="i18n: 'Your Email:'"></span>
-            </label>
-            <div class="control">
-                <input id="customer-email"
-                       data-bind="value: email, attr: {class: 'input-text', type: 'email', name: 'email', title: $t('Email')}"
-                       data-validate="{required:true, 'validate-email':true}"
-                />
-            </div>
-        </div>
-        <div class="field telephone required">
-            <label for="customer-telephone" class="label">
-                <span data-bind="i18n: 'Your Phone:'"></span>
-            </label>
-            <div class="control">
-                <input id="customer-telephone"
-                       data-bind="value: telephone, attr: {class: 'input-text', type: 'text', name: 'telephone', title: $t('Phone')}"
-                       data-validate="{required:true}"
-                />
-            </div>
-        </div>
-        <div class="field question required">
-            <label class="label" for="customer-question">
-                <span data-bind="i18n: 'Your Question:'"></span>
-            </label>
-            <div class="control">
-                <textarea id="customer-question"
-                          data-bind="value: question, attr: {rows: '10', cols: '45', name: 'question', title: $t('Question')}"
-                          data-validate="{required:true}">
-                </textarea>
-            </div>
-        </div>
+
+        <!-- ko foreach: getRegion('custom-contactus-form-fields') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+
     </fieldset>
     <div class="actions-toolbar">
         <div class="primary">

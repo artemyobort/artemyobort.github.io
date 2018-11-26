@@ -113,7 +113,7 @@ class GridRepository implements GridRepositoryInterface
             $message = $e->getMessage();
         }
 
-        return $message->__toString();
+        return $message;
     }
 
     /**

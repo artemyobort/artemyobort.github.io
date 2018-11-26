@@ -5,9 +5,9 @@
 </head>
 <body>
     <referenceBlock name="navigation.sections" remove="true" />
+
     <referenceContainer name="content">
         <block class="Brander\ContactUs\Block\ContactUs" name="contactForm" template="Brander_ContactUs::contactus_form.phtml" cacheable="false">
-
             <arguments>
                 <argument name="jsLayout" xsi:type="array">
                     <item name="components" xsi:type="array">
@@ -15,8 +15,86 @@
                             <item name="component" xsi:type="string">Brander_ContactUs/js/view/contactus-form-component</item>
                             <item name="config" xsi:type="array">
                                 <item name="template" xsi:type="string">Brander_ContactUs/contactus-form</item>
+                                <item name="provider" xsi:type="string">contactusProvider</item>
+                                <item name="deps" xsi:type="array">
+                                    <item name="0" xsi:type="string">contactusProvider</item>
+                                </item>
                             </item>
-                            <item name="displayArea" xsi:type="string">contactus</item>
+                            <item name="children" xsi:type="array">
+                                <item name="custom-contactus-form-fieldset" xsi:type="array">
+                                    <item name="component" xsi:type="string">uiComponent</item>
+                                    <item name="displayArea" xsi:type="string">custom-contactus-form-fields</item>
+                                    <item name="children" xsi:type="array">
+                                        <item name="name" xsi:type="array">
+                                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="customScope" xsi:type="string">customCheckoutForm</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                            </item>
+                                            <item name="provider" xsi:type="string">contactusProvider</item>
+                                            <item name="dataScope" xsi:type="string">customCheckoutForm.name</item>
+                                            <item name="label" xsi:type="string" translate="true">Your Name:</item>
+                                            <item name="sortOrder" xsi:type="string">1</item>
+                                            <item name="validation" xsi:type="array">
+                                                <item name="required-entry" xsi:type="boolean">true</item>
+                                            </item>
+                                        </item>
+                                        <item name="email" xsi:type="array">
+                                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="customScope" xsi:type="string">customCheckoutForm</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                            </item>
+                                            <item name="provider" xsi:type="string">contactusProvider</item>
+                                            <item name="dataScope" xsi:type="string">customCheckoutForm.email</item>
+                                            <item name="label" xsi:type="string" translate="true">Your Email:</item>
+                                            <item name="sortOrder" xsi:type="string">2</item>
+                                            <item name="validation" xsi:type="array">
+                                                <item name="required-entry" xsi:type="boolean">true</item>
+                                                <item name="validate-email" xsi:type="boolean">true</item>
+                                            </item>
+                                        </item>
+                                        <item name="telephone" xsi:type="array">
+                                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="customScope" xsi:type="string">customCheckoutForm</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                            </item>
+                                            <item name="provider" xsi:type="string">contactusProvider</item>
+                                            <item name="dataScope" xsi:type="string">customCheckoutForm.telephone</item>
+                                            <item name="label" xsi:type="string" translate="true">Your Phone:</item>
+                                            <item name="sortOrder" xsi:type="string">3</item>
+                                            <item name="validation" xsi:type="array">
+                                                <item name="required-entry" xsi:type="boolean">true</item>
+                                            </item>
+                                        </item>
+                                        <item name="question" xsi:type="array">
+                                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/textarea</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="customScope" xsi:type="string">customCheckoutForm</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="elementTmpl" xsi:type="string">ui/form/element/textarea</item>
+                                            </item>
+                                            <item name="provider" xsi:type="string">contactusProvider</item>
+                                            <item name="dataScope" xsi:type="string">customCheckoutForm.question</item>
+                                            <item name="label" xsi:type="string" translate="true">Your Question:</item>
+                                            <item name="sortOrder" xsi:type="string">4</item>
+                                            <item name="validation" xsi:type="array">
+                                                <item name="max_text_length" xsi:type="number">200</item>
+                                                <item name="required-entry" xsi:type="boolean">true</item>
+                                            </item>
+                                            <item name="rows" xsi:type="string">10</item>
+                                            <item name="cols" xsi:type="string">43</item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                        <item name="contactusProvider" xsi:type="array">
+                            <item name="component" xsi:type="string">uiComponent</item>
                         </item>
                     </item>
                 </argument>
